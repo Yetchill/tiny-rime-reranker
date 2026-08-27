@@ -1,0 +1,9 @@
+model: linear
+seed: 20260827
+train_data: /root/autodl-tmp/tiny-rime-reranker/datasets/pilot-rime-ice/train.jsonl.zst
+val_data: /root/autodl-tmp/tiny-rime-reranker/datasets/pilot-rime-ice/val.jsonl.zst
+test_data: /root/autodl-tmp/tiny-rime-reranker/datasets/pilot-rime-ice/test.jsonl.zst
+output_dir: /root/autodl-tmp/tiny-rime-reranker/experiments/real-first-sweep/linear
+batch_size: 512
+learning_rate: 0.002
+epochs: 4

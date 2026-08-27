@@ -33,7 +33,11 @@ def evaluate(model, loader, confidence_threshold: float = 0.80, margin_threshold
         for index in range(predictions.shape[0]):
             target = int(tensors["target"][index])
             prediction = int(predictions[index])
-            order = torch.argsort(final_scores[index], descending=True)
+            order = (
+                torch.argsort(final_scores[index], descending=True)
+                if bool(changed[index])
+                else torch.arange(mask.shape[1], device=device)[mask[index]]
+            )
             counts["samples"] += 1
             counts["baseline_top1"] += target == 0
             counts["model_top1"] += prediction == target
@@ -49,7 +53,7 @@ def evaluate(model, loader, confidence_threshold: float = 0.80, margin_threshold
             bin_index = min(9, int(probability * 10))
             confidence_bins[bin_index]["count"] += 1
             confidence_bins[bin_index]["probability_sum"] += probability
-            confidence_bins[bin_index]["correct"] += prediction == target
+            confidence_bins[bin_index]["correct"] += target != 0
     n = counts["samples"] or 1
     contested_n = len(contested_results) or 1
     ece = 0.0

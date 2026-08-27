@@ -10,7 +10,7 @@ import numpy as np
 import torch
 import torch.nn.functional as functional
 import yaml
-from safetensors.torch import save_file
+from safetensors.torch import load_file, save_file
 from torch.utils.data import DataLoader
 
 from training.dataset import RimeRankingDataset
@@ -41,8 +41,18 @@ def main() -> None:
     (output_dir / "config.json").write_text(json.dumps(config, indent=2, sort_keys=True) + "\n")
     train_data = RimeRankingDataset(Path(config["train_data"]), model_config.vocab_size)
     val_data = RimeRankingDataset(Path(config["val_data"]), model_config.vocab_size)
+    test_data = (
+        RimeRankingDataset(Path(config["test_data"]), model_config.vocab_size)
+        if config.get("test_data")
+        else None
+    )
     train_loader = DataLoader(train_data, batch_size=int(config.get("batch_size", 512)), shuffle=True, num_workers=4)
     val_loader = DataLoader(val_data, batch_size=int(config.get("batch_size", 512)), num_workers=2)
+    test_loader = (
+        DataLoader(test_data, batch_size=int(config.get("batch_size", 512)), num_workers=2)
+        if test_data is not None
+        else None
+    )
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if device.type != "cuda":
         raise RuntimeError("training is remote-GPU-only and CUDA is unavailable")
@@ -83,6 +93,8 @@ def main() -> None:
             best_net_wins = metrics["net_wins"]
             save_file({key: value.detach().cpu() for key, value in model.state_dict().items()}, output_dir / "best.safetensors")
     save_file({key: value.detach().cpu() for key, value in model.state_dict().items()}, output_dir / "last.safetensors")
+    model.load_state_dict(load_file(output_dir / "best.safetensors", device=str(device)))
+    test_metrics = evaluate(model, test_loader) if test_loader is not None else None
     summary = {
         "model": model_config.to_dict(),
         "parameter_count": model.parameter_count,
@@ -91,6 +103,7 @@ def main() -> None:
         "peak_vram_bytes": torch.cuda.max_memory_allocated(),
         "best_net_wins": best_net_wins,
         "epochs": history,
+        "test_metrics": test_metrics,
     }
     (output_dir / "metrics.json").write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n")
     print(json.dumps(summary, sort_keys=True))
