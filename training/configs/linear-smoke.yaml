@@ -1,0 +1,8 @@
+model: linear
+seed: 20260827
+train_data: /root/autodl-tmp/tiny-rime-reranker/datasets/smoke/train.jsonl.zst
+val_data: /root/autodl-tmp/tiny-rime-reranker/datasets/smoke/val.jsonl.zst
+output_dir: /root/autodl-tmp/tiny-rime-reranker/experiments/linear-smoke
+batch_size: 64
+learning_rate: 0.002
+epochs: 2

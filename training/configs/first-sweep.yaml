@@ -1,0 +1,10 @@
+# Template expanded by scripts/remote/run_first_sweep.sh after Gate 1 and
+# dataset validation pass. Do not point this at synthetic data.
+seed: 20260827
+train_data: /root/autodl-tmp/tiny-rime-reranker/datasets/pilot/train.jsonl.zst
+val_data: /root/autodl-tmp/tiny-rime-reranker/datasets/pilot/val.jsonl.zst
+test_data: /root/autodl-tmp/tiny-rime-reranker/datasets/pilot/test.jsonl.zst
+batch_size: 512
+learning_rate: 0.002
+epochs: 4
+models: [linear, mlp, tiny-2m, tiny-4m, tiny-8m]
