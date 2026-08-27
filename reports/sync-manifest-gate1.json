@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "bytes": 74813,
+      "path": "work/gate1-fixtures.jsonl",
+      "sha256": "b4f67b720d9b2bf4524b1de33f212b52ebda4a4e16be7236583a9717bf062980"
+    }
+  ],
+  "over_500mb_review_required": false,
+  "prohibited_matches": [],
+  "reason_if_over_500mb": "",
+  "root": "/root/autodl-tmp/tiny-rime-reranker",
+  "total_bytes": 74813
+}

@@ -1,0 +1,57 @@
+# Minimal, deterministic rime-ice baseline for headless candidate generation.
+# It intentionally excludes Lua, emoji conversion, personal phrases, and user
+# learning so that fixtures exercise the core script translator reproducibly.
+schema:
+  schema_id: tinyrime_ice
+  name: TinyRime rime-ice baseline
+  version: "0.1"
+  author:
+    - TinyRime contributors
+  description: Core librime script translator using the pinned rime-ice dictionary.
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中, A]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - fallback_segmentor
+  translators:
+    - script_translator
+  filters:
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  initials: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+    - derive/^([nl])ve$/$1ue/
+    - derive/^([jqxy])u/$1v/
+    - derive/^([nl])ue$/$1ve/
+    - derive/^([jqxy])v/$1u/
+
+translator:
+  dictionary: rime_ice
+  enable_word_completion: true
+  initial_quality: 1.2
+
+recognizer:
+  import_preset: default
+
+key_binder:
+  import_preset: default
