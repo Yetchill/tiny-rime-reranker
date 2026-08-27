@@ -10,6 +10,7 @@ requires-python = ">=3.10"
 
 [project.optional-dependencies]
 train = ["torch>=2.2", "numpy>=1.26", "PyYAML>=6", "zstandard>=0.22"]
+data = ["jieba>=0.42.1", "lxml>=5", "pypinyin>=0.55", "zstandard>=0.22"]
 test = ["pytest>=8"]
 
 [tool.setuptools.packages.find]

@@ -71,7 +71,9 @@ def validate(paths: list[Path]) -> dict:
     return {
         "samples": dict(counts),
         "documents": {split: len(values) for split, values in documents_by_split.items()},
-        "candidate_recall": {key: (value / total if total else 0.0) for key, value in recall.items()},
+        "retained_examples_rank_recall": {
+            key: (value / total if total else 0.0) for key, value in recall.items()
+        },
         "contested_pinyin_keys": sum(len(targets) >= 2 for targets in contested_targets.values()),
     }
 
