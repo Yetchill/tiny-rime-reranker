@@ -1,0 +1,34 @@
+{
+  "adapter": {
+    "document_id": "zhwiki:20260501:<id>",
+    "format": "JSON Lines despite .json suffix",
+    "observed_fields": {
+      "id": "string",
+      "tags": "string (dataset card describes array; adapter preserves observed value)",
+      "text": "string",
+      "title": "string"
+    }
+  },
+  "download": {
+    "completed_on": "2026-08-27",
+    "endpoint": "https://hf-mirror.com",
+    "method": "hf download with local-dir and resumable incomplete-file metadata",
+    "remote_path": "/root/autodl-tmp/tiny-rime-reranker/corpus/wikipedia-zh-cn-20260501.json",
+    "transferred_to_mac": false
+  },
+  "file": {
+    "bytes": 2393692848,
+    "name": "wikipedia-zh-cn-20260501.json",
+    "rows": 1489790,
+    "sha256": "c8c719a84d402371ffa6b99b57bc9bc524bf66e07d72dfc724e51d0224eaee62"
+  },
+  "license": {
+    "dataset_card_statement": "Chinese Wikipedia text under GFDL 1.3 and CC BY-SA 4.0; individual exceptions may apply",
+    "release_status_for_trained_weights": "research-only pending provenance and downstream review"
+  },
+  "repository": {
+    "id": "fjcanyue/wikipedia-zh-cn",
+    "revision": "38a697eb24e84c569ce05cb5f23336bdeb6a94c3",
+    "snapshot_date": "2026-05-01"
+  }
+}

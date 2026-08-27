@@ -1,0 +1,15 @@
+{
+  "contested_pinyin_keys": 8946,
+  "max_queries_per_document": 16,
+  "queries": {
+    "test": 25000,
+    "train": 250000,
+    "val": 25000
+  },
+  "selection": "jieba 2-4 Han-character tokens, fixed SHA-256 priority within each document",
+  "source_documents": {
+    "test": 1597,
+    "train": 15879,
+    "val": 1586
+  }
+}

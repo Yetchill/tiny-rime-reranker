@@ -1,0 +1,11 @@
+{
+  "batch_size": 512,
+  "epochs": 4,
+  "learning_rate": 0.002,
+  "model": "tiny-2m",
+  "output_dir": "experiments/real-first-sweep/tiny-2m",
+  "seed": 20260827,
+  "test_data": "/root/autodl-tmp/tiny-rime-reranker/datasets/pilot-rime-ice/test.jsonl.zst",
+  "train_data": "/root/autodl-tmp/tiny-rime-reranker/datasets/pilot-rime-ice/train.jsonl.zst",
+  "val_data": "/root/autodl-tmp/tiny-rime-reranker/datasets/pilot-rime-ice/val.jsonl.zst"
+}

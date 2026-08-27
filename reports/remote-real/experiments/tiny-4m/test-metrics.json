@@ -1,0 +1,17 @@
+{
+  "baseline_top1": 0.8405,
+  "calibration_ece": 0.020025817679785177,
+  "contested_mrr": 0.7511146780809702,
+  "contested_samples": 1068,
+  "contested_top1": 0.5917602996254682,
+  "losses": 3,
+  "mrr": 0.9190788095238092,
+  "net_wins": 240,
+  "promotion_precision": 0.9310344827586207,
+  "recall@8_ceiling": 1.0,
+  "reorder_coverage": 0.0261,
+  "samples": 10000,
+  "top1": 0.8645,
+  "top3": 0.9707,
+  "wins": 243
+}

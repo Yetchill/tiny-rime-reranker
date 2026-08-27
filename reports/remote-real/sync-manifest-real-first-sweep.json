@@ -1,0 +1,144 @@
+{
+  "files": [
+    {
+      "bytes": 341,
+      "path": "artifacts/deployment/tiny-8m-real/export-metadata.json",
+      "sha256": "e1931e4317b23bcd6b36bc985f79532eaf2f8c51b37f8c7bfbe85f7a7a66181a"
+    },
+    {
+      "bytes": 329,
+      "path": "artifacts/deployment/tiny-8m-real/model-config.json",
+      "sha256": "741b7d99dfbba5364121f9bfbf45ceb14ebf780545008bd710e623325e38ae1c"
+    },
+    {
+      "bytes": 417,
+      "path": "artifacts/deployment/tiny-8m-real/test-metrics.json",
+      "sha256": "6c898469b0627290baa0f07149642eb5e7db7594e5c54a88d451615b3713ebf6"
+    },
+    {
+      "bytes": 14865276,
+      "path": "artifacts/deployment/tiny-8m-real/tiny-8m-fp16.safetensors",
+      "sha256": "80da936a3e4616fbbb6172cbb37b208408101aab026cf484cb2f5187d288848a"
+    },
+    {
+      "bytes": 442,
+      "path": "artifacts/deployment/tiny-8m-real/training-config.json",
+      "sha256": "8c2d5b0100f5538c27f5890346d90906cfe8706fc489b1e2d9aaebc74112a5d4"
+    },
+    {
+      "bytes": 440,
+      "path": "experiments/real-first-sweep/linear/config.json",
+      "sha256": "e4a2b778835db60908bf15125486beea5d4e9455efd64c735e0ce45a21838705"
+    },
+    {
+      "bytes": 2899,
+      "path": "experiments/real-first-sweep/linear/metrics.json",
+      "sha256": "7b9287fb0ed745e61fe91a44126c4a4ef6ac9534c8c53215e7a8cce2e54dbb18"
+    },
+    {
+      "bytes": 394,
+      "path": "experiments/real-first-sweep/linear/test-metrics.json",
+      "sha256": "0d69a6fd4e09f0ea06756f1be28c943b3bd6f61e69bfd357b58c1e712b9e0e10"
+    },
+    {
+      "bytes": 434,
+      "path": "experiments/real-first-sweep/mlp/config.json",
+      "sha256": "5c6cb968de1e68dcb31b9ba05b694005893fb636f2e1da6fc09f42f132c63007"
+    },
+    {
+      "bytes": 2966,
+      "path": "experiments/real-first-sweep/mlp/metrics.json",
+      "sha256": "de26796d6b6b1c3e9ff1716d1eb10d3ff10b7a2441d0ce440b27c7c150fd88ac"
+    },
+    {
+      "bytes": 415,
+      "path": "experiments/real-first-sweep/mlp/test-metrics.json",
+      "sha256": "6f410185f97d922fabc42b455057616ea838b3f84b825743a9c617255eb8804c"
+    },
+    {
+      "bytes": 442,
+      "path": "experiments/real-first-sweep/tiny-2m/config.json",
+      "sha256": "5e798a59dc7909b852cd5ab9cb7d23428d282208a45adf27c2f336f2cf30d4d5"
+    },
+    {
+      "bytes": 3012,
+      "path": "experiments/real-first-sweep/tiny-2m/metrics.json",
+      "sha256": "4b68698c5733368ebd20fde1d0c7b4582a38b786db3680b5ac93af7b822e106e"
+    },
+    {
+      "bytes": 414,
+      "path": "experiments/real-first-sweep/tiny-2m/test-metrics.json",
+      "sha256": "e5cdfb1922c6c034e620ae08c2609231bc8dc75ba96dee6a00ce72639553d690"
+    },
+    {
+      "bytes": 442,
+      "path": "experiments/real-first-sweep/tiny-4m/config.json",
+      "sha256": "06128e0d2cb18b787184e060f1ba2cfd9a3a1ba83228d0572985b22cc994066b"
+    },
+    {
+      "bytes": 3020,
+      "path": "experiments/real-first-sweep/tiny-4m/metrics.json",
+      "sha256": "9199b342da2cba467d15264f3a034be434c7690d65df301d37362a1c01575d2f"
+    },
+    {
+      "bytes": 417,
+      "path": "experiments/real-first-sweep/tiny-4m/test-metrics.json",
+      "sha256": "99d8283820274554443c589246d030f51cfecfd431b855d9fdde4ec43b9c71e8"
+    },
+    {
+      "bytes": 442,
+      "path": "experiments/real-first-sweep/tiny-8m/config.json",
+      "sha256": "8c2d5b0100f5538c27f5890346d90906cfe8706fc489b1e2d9aaebc74112a5d4"
+    },
+    {
+      "bytes": 3023,
+      "path": "experiments/real-first-sweep/tiny-8m/metrics.json",
+      "sha256": "361f1daf7b8daabf3d8f9e68f0278aae1be5646444eb70426c5ca1e029a6bfe4"
+    },
+    {
+      "bytes": 417,
+      "path": "experiments/real-first-sweep/tiny-8m/test-metrics.json",
+      "sha256": "6c898469b0627290baa0f07149642eb5e7db7594e5c54a88d451615b3713ebf6"
+    },
+    {
+      "bytes": 356,
+      "path": "reports/pilot-dataset-statistics.json",
+      "sha256": "1c0469bfb5f433c74cc474abe113d3fc45b37a3bdeb6788f43c38f405da5a164"
+    },
+    {
+      "bytes": 831,
+      "path": "reports/rime-ice-candidate-profile.json",
+      "sha256": "74fbb09b0a947ce29c7b87c5d84cb402af1185c435b86bf855cabc655b266234"
+    },
+    {
+      "bytes": 818,
+      "path": "reports/wanxiang-candidate-profile.json",
+      "sha256": "5e2ce5c9e4e163bc701b65e4ba0e4718bbbc50cafeaf8d18b31bd9692776da6c"
+    },
+    {
+      "bytes": 489,
+      "path": "reports/wanxiang-model.json",
+      "sha256": "a342ce9230162070c04c9c147e7333532b578e4b023b54e31a48e379ca88a018"
+    },
+    {
+      "bytes": 1798,
+      "path": "reports/wanxiang-on-rime-retained-profile.json",
+      "sha256": "90dae39a178ee97f20a90d515181bebfa906525e8aebb74e1895c5bd8cf331f1"
+    },
+    {
+      "bytes": 324,
+      "path": "reports/wiki-query-statistics.json",
+      "sha256": "c579f68a8f786b073cd80c133c3a38353f4fe0973e280bea697f51c483399e91"
+    },
+    {
+      "bytes": 798,
+      "path": "reports/wiki-reservoir-statistics.json",
+      "sha256": "8a7b688c5f1b5e700a9b2db6af99a4086b1a696fcb72d639f686a80b4663e6f9"
+    }
+  ],
+  "over_500mb_review_required": false,
+  "prohibited_matches": [],
+  "reason_if_over_500mb": "",
+  "root": "/root/autodl-tmp/tiny-rime-reranker",
+  "total_bytes": 14891396
+}

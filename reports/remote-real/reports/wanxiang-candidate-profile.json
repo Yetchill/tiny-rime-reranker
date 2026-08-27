@@ -1,0 +1,42 @@
+{
+  "attempts": {
+    "test": 25000,
+    "train": 250000,
+    "val": 25000
+  },
+  "batch_size": 512,
+  "candidate_recall": {
+    "test": {
+      "recall@1": 0.78148,
+      "recall@3": 0.86396,
+      "recall@5": 0.88112,
+      "recall@8": 0.88808
+    },
+    "train": {
+      "recall@1": 0.783272,
+      "recall@3": 0.865604,
+      "recall@5": 0.88216,
+      "recall@8": 0.888952
+    },
+    "val": {
+      "recall@1": 0.78104,
+      "recall@3": 0.86484,
+      "recall@5": 0.88172,
+      "recall@8": 0.8878
+    }
+  },
+  "candidate_scoring_seconds_sum": 350.80168486759067,
+  "misses": {
+    "test": 2798,
+    "train": 27762,
+    "val": 2805
+  },
+  "queries_per_wall_second": 5378.066017653078,
+  "stored_examples": {
+    "test": 1,
+    "train": 1,
+    "val": 1
+  },
+  "wall_seconds": 55.782134138047695,
+  "workers": 8
+}

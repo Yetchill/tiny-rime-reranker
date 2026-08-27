@@ -1,0 +1,19 @@
+{
+  "contested_pinyin_keys": 2789,
+  "documents": {
+    "test": 722,
+    "train": 7163,
+    "val": 719
+  },
+  "retained_examples_rank_recall": {
+    "recall@1": 0.8375583333333333,
+    "recall@3": 0.9644083333333333,
+    "recall@5": 0.9896416666666666,
+    "recall@8": 1.0
+  },
+  "samples": {
+    "test": 10000,
+    "train": 100000,
+    "val": 10000
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "bytes": 420250668,
+  "download_url": "https://cnb.cool/amzxyz/rime-wanxiang/-/releases/download/model/wanxiang-lts-zh-hans.gram",
+  "librime_octagram_commit": "bfb168ca33d8b372596fdf2007933f3da1cf360e",
+  "librime_octagram_license": "GPL-3.0",
+  "model": "wanxiang-lts-zh-hans.gram",
+  "sha256": "01ffe37f22607bf8a5cd5d82a3349f6df97744369464aee4577585112d85469d",
+  "source_license": "CC-BY-4.0 repository license",
+  "source_project": "amzxyz/RIME-LMDG via maintainer CNB release"
+}
