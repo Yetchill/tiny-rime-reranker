@@ -1,49 +1,49 @@
-# TinyRime Context Reranker
+# TinyRime 上下文候选重排器
 
-TinyRime is a compact, local-only research reranker for the first eight Chinese pinyin candidates produced by Rime. It does not generate text: every accepted output is a permutation of candidates already supplied by the input engine. If the model abstains, times out, fails, or returns an invalid order, the original Rime order is preserved.
+TinyRime 是一个紧凑、完全本地运行的中文拼音候选重排研究项目。它接收 Rime 提供的前 8 个候选词，结合左侧上下文重新排序，但不会生成新文本：所有被接受的输出都只是原候选集合的稳定排列。如果模型选择放弃、超时、运行失败或给出非法结果，系统会原样保留 Rime 的候选顺序。
 
-This repository is the **v0.1 research release**. It contains the frozen `TinyRime-Context-v1` protocol, evaluation and overlap tooling, aggregate results, a native runtime contract, and tests. It is not a complete macOS input method, and it does not claim to be the best open-source Chinese IME.
+当前仓库是 **v0.1 研究版本**，包含冻结的 `TinyRime-Context-v1` 协议、评测与错误重叠分析工具、真实实验结果、原生运行时接口和测试。它还不是一个可直接安装的 macOS 输入法，也不宣称是“最好的开源中文输入法”。
 
-## Architecture
+## 架构
 
 ```text
-Rime Top-8 candidates + left context + pinyin + candidate metadata
-                              |
-                    compact residual scorer
-                              |
-              confidence gate / optional abstention
-                              |
-             stable permutation of the same Top-8
+Rime Top-8 候选 + 左侧上下文 + 拼音 + 候选元数据
+                         |
+                  紧凑残差打分模型
+                         |
+                 置信度门控 / 放弃
+                         |
+              对原 Top-8 候选做稳定重排
 ```
 
-The learned variants share deterministic character and pinyin features. Tiny-2M/4M/8M add a small Transformer encoder; MLP is the non-attention baseline. Candidate type is represented categorically in the corrected code path. The v0 checkpoints predate that fix and are evaluated with an explicit `legacy_zero` compatibility mode rather than silently changing their inputs.
+各学习模型共用确定性的汉字与拼音特征。Tiny-2M/4M/8M 使用小型 Transformer 编码器，MLP 是无注意力基线。修正后的代码使用 categorical vocabulary 表示候选类型。v0 检查点训练时还没有这一特征，因此正式复评使用明确的 `legacy_zero` 兼容模式，避免在不重新训练的情况下暗中改变模型输入。
 
-## TinyRime-Context-v1
+## TinyRime-Context-v1 基准
 
-The benchmark uses `fjcanyue/wikipedia-zh-cn`, snapshot 2026-05-01, sampled across the complete 1,489,790-document JSONL with seed `20260827`. Documents are split before query windows are produced. The fixed query pool contains 250,000 train, 25,000 validation, and 25,000 test queries from disjoint document IDs.
+数据来自 `fjcanyue/wikipedia-zh-cn` 的 2026-05-01 快照。流水线使用固定种子 `20260827` 扫描完整的 1,489,790 篇文档，并进行跨全文档级采样。所有文档先按 document ID 划分，再生成查询窗口。固定 query pool 包含 250,000 条训练查询、25,000 条验证查询和 25,000 条测试查询，三个 split 的文档互不重叠。
 
-The v1 protocol fixes the pilot's first-success truncation:
+v1 修复了 pilot 阶段的 first-success 截断问题：
 
-- candidate generation runs over each complete fixed query split;
-- all recallable validation and test examples are retained (22,066 val; 22,080 test);
-- 100,000 training examples are selected only after all 221,069 recallable train examples are generated, using a stable SHA-256 priority;
-- `contested` is defined once on the full query pool and persisted;
-- candidate misses are sampled and diagnosed independently per split;
-- candidate type uses a categorical vocabulary; and
-- the hash vocabulary is audited. The 8,499 observed character+pinyin tokens require 8,501 exact embedding entries; the 32,768-bucket hash still has 12.47% unique-token collisions, including 26 of the 100 most frequent tokens.
+- candidate generation 覆盖每个完整 query split；
+- val/test 保留全部可召回样本，分别为 22,066 和 22,080 条；
+- 先生成全部 221,069 条可召回训练样本，再按稳定 SHA-256 优先级选择 100,000 条；
+- `contested` 在完整固定 query pool 上统一定义并持久化；
+- candidate miss 按 split 独立、确定性采样和诊断；
+- candidate type 改为 categorical encoding；
+- 完成 hash vocabulary collision audit：共观察到 8,499 个汉字与拼音 token，exact vocabulary 需要 8,501 个 embedding；32,768 桶的 hash 仍有 12.47% 的 unique-token collision，最高频 100 个 token 中有 26 个发生碰撞。
 
-The immutable manifest with source revisions and content hashes is in [`reports/TinyRime-Context-v1/benchmark_manifest.json`](reports/TinyRime-Context-v1/benchmark_manifest.json).
+包含数据来源、上游版本和内容哈希的不可变清单位于 [`reports/TinyRime-Context-v1/benchmark_manifest.json`](reports/TinyRime-Context-v1/benchmark_manifest.json)。
 
-## Results
+## 实验结果
 
-Candidate recall uses every test query, including misses. Ranking metrics use all 22,080 test examples whose gold target occurs in the original Rime Top-8.
+Candidate Recall 使用全部 25,000 条测试查询，包括无法召回的样本。排序指标使用 gold 位于原始 Rime Top-8 中的全部 22,080 条测试样本。
 
 | Candidate generator | Recall@1 | Recall@3 | Recall@5 | Recall@8 | Recall@32 |
 |---|---:|---:|---:|---:|---:|
 | Rime + rime-ice | 73.704% | 85.068% | 87.396% | 88.320% | 88.868% |
 | Rime + Wanxiang octagram | 78.148% | 86.396% | 88.112% | 88.808% | 89.232% |
 
-| Ranker | Top-1 | Top-3 | MRR | Contested Top-1 |
+| 排序方法 | Top-1 | Top-3 | MRR | Contested Top-1 |
 |---|---:|---:|---:|---:|
 | Rime | 83.451% | 96.318% | 0.90087 | 72.267% |
 | MLP | 84.031% | 96.599% | 0.90461 | 73.411% |
@@ -52,15 +52,15 @@ Candidate recall uses every test query, including misses. Ranking metrics use al
 | Tiny-8M | **86.621%** | **97.160%** | **0.92004** | **77.598%** |
 | Wanxiang | **87.944%** | **97.251%** | **0.92738** | **80.083%** |
 
-Tiny-8M is the strongest standalone neural model, but it does **not** beat Wanxiang: 633 test examples are fixed only by Tiny-8M, while 925 are fixed only by Wanxiang (net -292). Their oracle hybrid reaches 90.811% Top-1. A simple threshold selected on validation reaches 90.349% on test, with 697 wins, 166 losses, and +531 net wins over Wanxiang. This is exploratory hybrid evidence, not a final calibrated product rule.
+Tiny-8M 是当前最强的独立神经模型，但没有超过 Wanxiang：633 条测试样本只有 Tiny-8M 排对，925 条只有 Wanxiang 排对，净胜为 -292。两者的 Oracle hybrid 可以达到 90.811% Top-1。一个只在 val 上选择阈值的简单 hybrid 在 test 上达到 90.349%，相对 Wanxiang 有 697 wins、166 losses 和 +531 net wins。该结果说明 hybrid routing 值得继续研究，但还不是完成校准的产品规则。
 
-The selected neural checkpoint has 7,430,338 parameters. Its verified FP16 safetensors export is 14,865,276 bytes (SHA-256 `80da936a3e4616fbbb6172cbb37b208408101aab026cf484cb2f5187d288848a`), versus the 420,250,668-byte external Wanxiang grammar. The checkpoint is kept locally for research but is not committed or included in the public release pending a separate downstream-weight provenance review.
+Tiny-8M 有 7,430,338 个参数。经校验的 FP16 safetensors 文件大小为 14,865,276 bytes，SHA-256 为 `80da936a3e4616fbbb6172cbb37b208408101aab026cf484cb2f5187d288848a`；外部 Wanxiang grammar 文件为 420,250,668 bytes。由于训练权重的下游数据许可仍需单独审查，检查点只保留在本地研究环境中，不进入 Git，也不包含在公开版本里。
 
-Full results and claim boundaries are in [`reports/v0.1-release-report.md`](reports/v0.1-release-report.md). The resource comparison is in [`reports/pareto-frontier.md`](reports/pareto-frontier.md).
+完整数字、结论边界和下一步判断见 [`reports/v0.1-release-report.md`](reports/v0.1-release-report.md)，资源对比见 [`reports/pareto-frontier.md`](reports/pareto-frontier.md)。
 
-## Reproducing
+## 复现
 
-Run the local test suite first:
+先运行本地测试：
 
 ```bash
 python -m pytest
@@ -69,34 +69,50 @@ cmake --build build/plugin
 ctest --test-dir build/plugin --output-on-failure
 ```
 
-The complete corpus, ranking datasets, candidate caches, external Wanxiang model, and original checkpoints are intentionally absent from Git. On a prepared AutoDL data disk with the locked upstream dependencies and source assets described in [`DATA_LICENSES.md`](DATA_LICENSES.md), reproduce the frozen data path and evaluation with:
+完整 corpus、ranking dataset、candidate cache、外部 Wanxiang 模型和原始 checkpoint 均不会进入 Git。在已经按 [`DATA_LICENSES.md`](DATA_LICENSES.md) 准备好锁定上游依赖和数据文件的 AutoDL 数据盘上，可以运行：
 
 ```bash
 bash scripts/remote/build_context_v1.sh ddba2f778f008813514368226f55a0e7a695c48d
 bash scripts/remote/evaluate_context_v1.sh
 ```
 
-Before copying any result back to a Mac, create and inspect the explicit size/SHA-256 manifest. Do not transfer the corpus, complete datasets, caches, checkpoints, raw logs, or the full prediction artifact. The detailed protocol is in [`docs/benchmark-v1-protocol.md`](docs/benchmark-v1-protocol.md), and the disk rules are in [`docs/data-and-disk-policy.md`](docs/data-and-disk-policy.md).
+任何 AutoDL → Mac 同步都必须先生成并检查包含文件大小与 SHA-256 的清单。禁止同步完整 corpus、完整 dataset、cache、checkpoint、原始日志或完整 prediction artifact。详细协议见 [`docs/benchmark-v1-protocol.md`](docs/benchmark-v1-protocol.md)，磁盘规则见 [`docs/data-and-disk-policy.md`](docs/data-and-disk-policy.md)。
 
-## Safety invariants
+## 安全约束
 
-- Top-K defaults to 8; reranking cannot introduce candidate text.
-- Conservative gating defaults to abstention.
-- Scoring is synchronous; a missed deadline discards the result for that composition.
-- There is no network, telemetry, polling, background training, or user-history upload path.
-- User dictionaries, candidate objects, comments, preedit, and engine learning remain owned by Rime.
+- 默认只重排 Top-8，不能引入候选列表之外的文本；
+- 保守门控默认选择放弃重排；
+- 打分同步执行，超过 deadline 时丢弃本次结果；
+- 不包含网络请求、遥测、轮询、后台训练或用户历史上传路径；
+- 用户词典、候选对象、注释、preedit 和引擎学习仍完全由 Rime 管理。
 
-## Limitations
+## 当前限制
 
-- The benchmark is Wikipedia-derived and measures offline context reranking, not real user typing.
-- Results come from one training seed and one 100k training subset; v0.1 does not establish multi-seed variance or data-scaling behavior.
-- The candidate pool is Rime Top-8. Even the Rime/Wanxiang union reaches only 89.260% recall at 32 candidates on the full query pool.
-- The current checkpoint used legacy candidate-type inputs; categorical-type and exact-vocabulary code paths have not yet received a controlled training ablation.
-- Trained-model end-to-end latency and incremental RSS are not measured. The existing native microbenchmark is synthetic and must not be treated as product evidence.
-- No external IME benchmark, Squirrel integration, Core ML product optimization, or public weight redistribution review is included.
+- Benchmark 来自 Wikipedia，衡量的是离线上下文重排，不是真实用户输入体验；
+- 当前结果只有一个训练种子和一个 100k 训练子集，不能说明 multi-seed 方差或 data scaling 趋势；
+- 模型只能处理 Rime Top-8。即使合并 Rime/Wanxiang 候选，完整 query pool 上的 Union@32 Recall 也只有 89.260%；
+- 当前 checkpoint 使用旧的 candidate-type 输入，categorical type 和 exact vocabulary 尚未完成受控训练 ablation；
+- 训练模型的端到端延迟和 incremental RSS 尚未测量，现有 native microbenchmark 只是合成测试，不能作为产品证据；
+- v0.1 不包含外部输入法 benchmark、Squirrel 系统集成、Core ML 产品优化或训练权重公开分发审查。
 
-## Next research question
+## 下一项研究问题
 
-The one highest-value follow-up is a **validation-calibrated residual router that promotes Tiny-8M only when Wanxiang is likely wrong**. The measured 2.867-point oracle gap and strong val-selected hybrid result make routing more promising than increasing model size or dataset scale. v0.1 deliberately stops before starting that experiment.
+最值得继续验证的问题是：能否训练或校准一个 **Wanxiang → Tiny-8M residual router**，只在 Wanxiang 可能出错而 Tiny-8M 更可靠时提升候选，同时跨 seed 保持至少 95% promotion precision。现有 2.867 个百分点的 Oracle 空间和 val-selected hybrid 结果表明，routing 比继续扩大模型或数据更值得优先研究。v0.1 在启动该实验前停止。
 
-TinyRime source code is available under the BSD-3-Clause license. External software, data, and model artifacts retain their own licenses; see [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) and [`DATA_LICENSES.md`](DATA_LICENSES.md).
+## 致谢与借鉴
+
+TinyRime 建立在开源输入法社区长期积累的工作之上，特别感谢：
+
+- [rime/librime](https://github.com/rime/librime)：提供 Rime 核心引擎、候选接口和运行时契约，本项目的 headless candidate runner 基于其 API；
+- [iDvel/rime-ice](https://github.com/iDvel/rime-ice)：提供本研究使用的 Rime 词典与配置基线；
+- [amzxyz/RIME-LMDG](https://github.com/amzxyz/RIME-LMDG) 与 [lotem/librime-octagram](https://github.com/lotem/librime-octagram)：提供并支持 Wanxiang grammar 强基线；
+- [rime/squirrel](https://github.com/rime/squirrel)：为 macOS 输入法生命周期和前端边界设计提供参考；
+- [wyjrichhh/librime-ai-predict](https://github.com/wyjrichhh/librime-ai-predict)：其 filter、上下文和失败回退实现为运行时设计提供了参考；
+- [shenmin/cassotis-ime](https://github.com/shenmin/cassotis-ime)：其保守式 residual ranking 思路为 TinyRime 的门控设计提供了借鉴；
+- [fjcanyue/wikipedia-zh-cn](https://huggingface.co/datasets/fjcanyue/wikipedia-zh-cn) 与中文维基百科贡献者：提供本研究使用的公开中文语料来源。
+
+研究过程中也阅读了 [cooelf/OpenIME](https://github.com/cooelf/OpenIME) 的论文与 benchmark 设计，用于了解已有研究版图；本项目没有使用其代码或数据。
+
+以上项目及数据各自保留原许可证，TinyRime 的 BSD-3-Clause 许可证不会改变或覆盖它们。完整版本锁定与使用方式见 [`docs/upstream-lock.md`](docs/upstream-lock.md)、[`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) 和 [`DATA_LICENSES.md`](DATA_LICENSES.md)。
+
+TinyRime 自有源代码采用 BSD-3-Clause 许可证。
