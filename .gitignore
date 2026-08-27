@@ -29,8 +29,8 @@ raw-logs/
 *.mlmodel
 *.mlpackage/
 
-remote/
-tmp/
+/remote/
+/tmp/
 .DS_Store
 
 # Never store secrets, interactive SSH helpers, or private input history.
