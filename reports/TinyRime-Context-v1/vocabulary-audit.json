@@ -1,0 +1,3948 @@
+{
+  "candidate_type_counts": {
+    "completion": 11227,
+    "phrase": 782302,
+    "sentence": 275
+  },
+  "character_token_occurrences": 4437672,
+  "exact_vocabulary": {
+    "assigned_tokens": 8499,
+    "embedding_capacity": 32768,
+    "required_embeddings": 8501,
+    "sha256": "fb0b000b7e1373e685b495ad1584d78a3206103fdfa1e1657572a8e2497b295c",
+    "unused_embeddings": 24267
+  },
+  "examples": 100000,
+  "hash_collision_audit": {
+    "16384": {
+      "colliding_buckets": 1578,
+      "collision_count": 1863,
+      "collision_rate": 0.21920225908930463,
+      "embedding_capacity": 16384,
+      "high_frequency_collisions": [
+        {
+          "bucket": 11126,
+          "collides_with": [
+            {
+              "frequency": 6,
+              "namespace": "char",
+              "token": "踔"
+            }
+          ],
+          "frequency": 121093,
+          "namespace": "char",
+          "token": "，"
+        },
+        {
+          "bucket": 9097,
+          "collides_with": [
+            {
+              "frequency": 532,
+              "namespace": "char",
+              "token": "横"
+            }
+          ],
+          "frequency": 69220,
+          "namespace": "char",
+          "token": "的"
+        },
+        {
+          "bucket": 4349,
+          "collides_with": [
+            {
+              "frequency": 7899,
+              "namespace": "char",
+              "token": "三"
+            }
+          ],
+          "frequency": 34232,
+          "namespace": "char",
+          "token": "\n"
+        },
+        {
+          "bucket": 7402,
+          "collides_with": [
+            {
+              "frequency": 1352,
+              "namespace": "char",
+              "token": "千"
+            },
+            {
+              "frequency": 7,
+              "namespace": "char",
+              "token": "颏"
+            }
+          ],
+          "frequency": 30853,
+          "namespace": "char",
+          "token": "0"
+        },
+        {
+          "bucket": 14804,
+          "collides_with": [
+            {
+              "frequency": 17,
+              "namespace": "char",
+              "token": "帛"
+            },
+            {
+              "frequency": 1982,
+              "namespace": "char",
+              "token": "纳"
+            }
+          ],
+          "frequency": 28957,
+          "namespace": "char",
+          "token": "2"
+        },
+        {
+          "bucket": 10290,
+          "collides_with": [
+            {
+              "frequency": 10,
+              "namespace": "char",
+              "token": "筝"
+            }
+          ],
+          "frequency": 24982,
+          "namespace": "char",
+          "token": "人"
+        },
+        {
+          "bucket": 7251,
+          "collides_with": [
+            {
+              "frequency": 27,
+              "namespace": "char",
+              "token": "鹭"
+            }
+          ],
+          "frequency": 24832,
+          "namespace": "char",
+          "token": "大"
+        },
+        {
+          "bucket": 4376,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "廸"
+            }
+          ],
+          "frequency": 22368,
+          "namespace": "char",
+          "token": "于"
+        },
+        {
+          "bucket": 9593,
+          "collides_with": [
+            {
+              "frequency": 89,
+              "namespace": "char",
+              "token": "熹"
+            }
+          ],
+          "frequency": 14901,
+          "namespace": "char",
+          "token": "地"
+        },
+        {
+          "bucket": 756,
+          "collides_with": [
+            {
+              "frequency": 1202,
+              "namespace": "char",
+              "token": "嘉"
+            }
+          ],
+          "frequency": 14421,
+          "namespace": "char",
+          "token": "时"
+        },
+        {
+          "bucket": 14210,
+          "collides_with": [
+            {
+              "frequency": 18,
+              "namespace": "char",
+              "token": "皋"
+            }
+          ],
+          "frequency": 14327,
+          "namespace": "char",
+          "token": "（"
+        },
+        {
+          "bucket": 14303,
+          "collides_with": [
+            {
+              "frequency": 40,
+              "namespace": "char",
+              "token": "钝"
+            }
+          ],
+          "frequency": 14057,
+          "namespace": "char",
+          "token": "日"
+        },
+        {
+          "bucket": 3498,
+          "collides_with": [
+            {
+              "frequency": 11,
+              "namespace": "char",
+              "token": "钪"
+            }
+          ],
+          "frequency": 12925,
+          "namespace": "char",
+          "token": "会"
+        },
+        {
+          "bucket": 712,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "徼"
+            }
+          ],
+          "frequency": 12802,
+          "namespace": "char",
+          "token": "出"
+        },
+        {
+          "bucket": 16044,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "憻"
+            },
+            {
+              "frequency": 215,
+              "namespace": "char",
+              "token": "颓"
+            }
+          ],
+          "frequency": 12513,
+          "namespace": "char",
+          "token": "e"
+        },
+        {
+          "bucket": 2112,
+          "collides_with": [
+            {
+              "frequency": 205,
+              "namespace": "char",
+              "token": "脂"
+            }
+          ],
+          "frequency": 12504,
+          "namespace": "char",
+          "token": "公"
+        },
+        {
+          "bucket": 12764,
+          "collides_with": [
+            {
+              "frequency": 38,
+              "namespace": "pinyin",
+              "token": "zhuo"
+            }
+          ],
+          "frequency": 12153,
+          "namespace": "char",
+          "token": "a"
+        },
+        {
+          "bucket": 12367,
+          "collides_with": [
+            {
+              "frequency": 82,
+              "namespace": "char",
+              "token": "叮"
+            }
+          ],
+          "frequency": 12136,
+          "namespace": "char",
+          "token": "生"
+        },
+        {
+          "bucket": 12546,
+          "collides_with": [
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "亓"
+            }
+          ],
+          "frequency": 11705,
+          "namespace": "char",
+          "token": "行"
+        },
+        {
+          "bucket": 14788,
+          "collides_with": [
+            {
+              "frequency": 112,
+              "namespace": "char",
+              "token": "歉"
+            }
+          ],
+          "frequency": 11674,
+          "namespace": "char",
+          "token": "上"
+        },
+        {
+          "bucket": 15279,
+          "collides_with": [
+            {
+              "frequency": 60,
+              "namespace": "char",
+              "token": "颂"
+            }
+          ],
+          "frequency": 11472,
+          "namespace": "char",
+          "token": "法"
+        },
+        {
+          "bucket": 13044,
+          "collides_with": [
+            {
+              "frequency": 24,
+              "namespace": "char",
+              "token": "粲"
+            }
+          ],
+          "frequency": 11448,
+          "namespace": "char",
+          "token": "个"
+        },
+        {
+          "bucket": 2218,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "Ꜣ"
+            }
+          ],
+          "frequency": 11385,
+          "namespace": "char",
+          "token": "5"
+        },
+        {
+          "bucket": 14347,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "ვ"
+            }
+          ],
+          "frequency": 11016,
+          "namespace": "char",
+          "token": "西"
+        },
+        {
+          "bucket": 9222,
+          "collides_with": [
+            {
+              "frequency": 53,
+              "namespace": "char",
+              "token": "倪"
+            }
+          ],
+          "frequency": 11001,
+          "namespace": "char",
+          "token": "8"
+        },
+        {
+          "bucket": 367,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "ស"
+            },
+            {
+              "frequency": 33,
+              "namespace": "char",
+              "token": "圄"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "觜"
+            }
+          ],
+          "frequency": 10849,
+          "namespace": "char",
+          "token": "名"
+        },
+        {
+          "bucket": 1535,
+          "collides_with": [
+            {
+              "frequency": 94,
+              "namespace": "char",
+              "token": "耻"
+            }
+          ],
+          "frequency": 9935,
+          "namespace": "char",
+          "token": "作"
+        },
+        {
+          "bucket": 10805,
+          "collides_with": [
+            {
+              "frequency": 36,
+              "namespace": "char",
+              "token": "ラ"
+            },
+            {
+              "frequency": 238,
+              "namespace": "char",
+              "token": "妮"
+            }
+          ],
+          "frequency": 9935,
+          "namespace": "char",
+          "token": "过"
+        },
+        {
+          "bucket": 13403,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "𫚙"
+            }
+          ],
+          "frequency": 9580,
+          "namespace": "char",
+          "token": "分"
+        },
+        {
+          "bucket": 8730,
+          "collides_with": [
+            {
+              "frequency": 14,
+              "namespace": "char",
+              "token": "鳓"
+            }
+          ],
+          "frequency": 9578,
+          "namespace": "char",
+          "token": "第"
+        },
+        {
+          "bucket": 6920,
+          "collides_with": [
+            {
+              "frequency": 219,
+              "namespace": "char",
+              "token": "邪"
+            }
+          ],
+          "frequency": 9480,
+          "namespace": "char",
+          "token": "尔"
+        },
+        {
+          "bucket": 7753,
+          "collides_with": [
+            {
+              "frequency": 1685,
+              "namespace": "char",
+              "token": "供"
+            },
+            {
+              "frequency": 71,
+              "namespace": "char",
+              "token": "惩"
+            }
+          ],
+          "frequency": 9214,
+          "namespace": "char",
+          "token": "n"
+        },
+        {
+          "bucket": 9786,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "惎"
+            }
+          ],
+          "frequency": 9044,
+          "namespace": "char",
+          "token": "事"
+        },
+        {
+          "bucket": 7147,
+          "collides_with": [
+            {
+              "frequency": 52,
+              "namespace": "char",
+              "token": "诹"
+            },
+            {
+              "frequency": 448,
+              "namespace": "pinyin",
+              "token": "ta"
+            }
+          ],
+          "frequency": 8930,
+          "namespace": "char",
+          "token": "他"
+        },
+        {
+          "bucket": 6318,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "煲"
+            }
+          ],
+          "frequency": 8752,
+          "namespace": "char",
+          "token": "下"
+        },
+        {
+          "bucket": 2534,
+          "collides_with": [
+            {
+              "frequency": 13,
+              "namespace": "char",
+              "token": "嗯"
+            }
+          ],
+          "frequency": 8501,
+          "namespace": "char",
+          "token": "长"
+        },
+        {
+          "bucket": 16118,
+          "collides_with": [
+            {
+              "frequency": 61,
+              "namespace": "char",
+              "token": "鹦"
+            },
+            {
+              "frequency": 6,
+              "namespace": "char",
+              "token": "ꦸ"
+            }
+          ],
+          "frequency": 8323,
+          "namespace": "char",
+          "token": "政"
+        },
+        {
+          "bucket": 13348,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "嶷"
+            },
+            {
+              "frequency": 14,
+              "namespace": "char",
+              "token": "邡"
+            }
+          ],
+          "frequency": 8209,
+          "namespace": "char",
+          "token": "语"
+        },
+        {
+          "bucket": 10625,
+          "collides_with": [
+            {
+              "frequency": 37,
+              "namespace": "char",
+              "token": "呓"
+            }
+          ],
+          "frequency": 8184,
+          "namespace": "char",
+          "token": "东"
+        },
+        {
+          "bucket": 14369,
+          "collides_with": [
+            {
+              "frequency": 38,
+              "namespace": "char",
+              "token": "酵"
+            }
+          ],
+          "frequency": 8025,
+          "namespace": "char",
+          "token": "到"
+        },
+        {
+          "bucket": 8068,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "帙"
+            }
+          ],
+          "frequency": 8008,
+          "namespace": "char",
+          "token": "同"
+        },
+        {
+          "bucket": 15019,
+          "collides_with": [
+            {
+              "frequency": 14,
+              "namespace": "char",
+              "token": "ά"
+            }
+          ],
+          "frequency": 7999,
+          "namespace": "char",
+          "token": "本"
+        },
+        {
+          "bucket": 139,
+          "collides_with": [
+            {
+              "frequency": 13,
+              "namespace": "char",
+              "token": "ق"
+            }
+          ],
+          "frequency": 7997,
+          "namespace": "char",
+          "token": "省"
+        },
+        {
+          "bucket": 4349,
+          "collides_with": [
+            {
+              "frequency": 34232,
+              "namespace": "char",
+              "token": "\n"
+            }
+          ],
+          "frequency": 7899,
+          "namespace": "char",
+          "token": "三"
+        },
+        {
+          "bucket": 8530,
+          "collides_with": [
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "険"
+            }
+          ],
+          "frequency": 7731,
+          "namespace": "char",
+          "token": "里"
+        },
+        {
+          "bucket": 16190,
+          "collides_with": [
+            {
+              "frequency": 492,
+              "namespace": "char",
+              "token": "泉"
+            },
+            {
+              "frequency": 224,
+              "namespace": "char",
+              "token": "烦"
+            }
+          ],
+          "frequency": 7661,
+          "namespace": "char",
+          "token": "开"
+        },
+        {
+          "bucket": 4740,
+          "collides_with": [
+            {
+              "frequency": 672,
+              "namespace": "char",
+              "token": "缩"
+            }
+          ],
+          "frequency": 7580,
+          "namespace": "char",
+          "token": "北"
+        },
+        {
+          "bucket": 5819,
+          "collides_with": [
+            {
+              "frequency": 50,
+              "namespace": "char",
+              "token": "鹃"
+            }
+          ],
+          "frequency": 7310,
+          "namespace": "char",
+          "token": "文"
+        }
+      ],
+      "occupied_buckets": 6636,
+      "top100_tokens_with_collision": 48,
+      "unique_tokens": 8499,
+      "usable_hash_buckets": 16383
+    },
+    "32768": {
+      "colliding_buckets": 978,
+      "collision_count": 1060,
+      "collision_rate": 0.12472055535945405,
+      "embedding_capacity": 32768,
+      "high_frequency_collisions": [
+        {
+          "bucket": 13577,
+          "collides_with": [
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "¥"
+            }
+          ],
+          "frequency": 121093,
+          "namespace": "char",
+          "token": "，"
+        },
+        {
+          "bucket": 10031,
+          "collides_with": [
+            {
+              "frequency": 468,
+              "namespace": "char",
+              "token": "凡"
+            },
+            {
+              "frequency": 322,
+              "namespace": "pinyin",
+              "token": "kong"
+            }
+          ],
+          "frequency": 64795,
+          "namespace": "char",
+          "token": "。"
+        },
+        {
+          "bucket": 9045,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "隷"
+            }
+          ],
+          "frequency": 34232,
+          "namespace": "char",
+          "token": "\n"
+        },
+        {
+          "bucket": 7562,
+          "collides_with": [
+            {
+              "frequency": 44,
+              "namespace": "char",
+              "token": "怎"
+            }
+          ],
+          "frequency": 28818,
+          "namespace": "char",
+          "token": "中"
+        },
+        {
+          "bucket": 22213,
+          "collides_with": [
+            {
+              "frequency": 8,
+              "namespace": "char",
+              "token": "蚣"
+            },
+            {
+              "frequency": 441,
+              "namespace": "char",
+              "token": "阀"
+            }
+          ],
+          "frequency": 26364,
+          "namespace": "char",
+          "token": "、"
+        },
+        {
+          "bucket": 16506,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "凊"
+            },
+            {
+              "frequency": 7,
+              "namespace": "char",
+              "token": "苁"
+            }
+          ],
+          "frequency": 22368,
+          "namespace": "char",
+          "token": "于"
+        },
+        {
+          "bucket": 11077,
+          "collides_with": [
+            {
+              "frequency": 81,
+              "namespace": "char",
+              "token": "捞"
+            }
+          ],
+          "frequency": 19380,
+          "namespace": "char",
+          "token": "9"
+        },
+        {
+          "bucket": 3375,
+          "collides_with": [
+            {
+              "frequency": 238,
+              "namespace": "char",
+              "token": "酷"
+            }
+          ],
+          "frequency": 16079,
+          "namespace": "char",
+          "token": " "
+        },
+        {
+          "bucket": 15036,
+          "collides_with": [
+            {
+              "frequency": 50,
+              "namespace": "char",
+              "token": "宵"
+            }
+          ],
+          "frequency": 14938,
+          "namespace": "char",
+          "token": "和"
+        },
+        {
+          "bucket": 25910,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "Ἑ"
+            },
+            {
+              "frequency": 9578,
+              "namespace": "char",
+              "token": "第"
+            }
+          ],
+          "frequency": 14327,
+          "namespace": "char",
+          "token": "（"
+        },
+        {
+          "bucket": 14777,
+          "collides_with": [
+            {
+              "frequency": 360,
+              "namespace": "char",
+              "token": "尸"
+            }
+          ],
+          "frequency": 14290,
+          "namespace": "char",
+          "token": "月"
+        },
+        {
+          "bucket": 32607,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "蓨"
+            }
+          ],
+          "frequency": 14082,
+          "namespace": "char",
+          "token": "以"
+        },
+        {
+          "bucket": 2075,
+          "collides_with": [
+            {
+              "frequency": 27,
+              "namespace": "char",
+              "token": "瞄"
+            }
+          ],
+          "frequency": 13798,
+          "namespace": "char",
+          "token": "成"
+        },
+        {
+          "bucket": 17262,
+          "collides_with": [
+            {
+              "frequency": 46,
+              "namespace": "char",
+              "token": "擒"
+            }
+          ],
+          "frequency": 12039,
+          "namespace": "char",
+          "token": "不"
+        },
+        {
+          "bucket": 32586,
+          "collides_with": [
+            {
+              "frequency": 24,
+              "namespace": "char",
+              "token": "竿"
+            }
+          ],
+          "frequency": 11705,
+          "namespace": "char",
+          "token": "行"
+        },
+        {
+          "bucket": 29806,
+          "collides_with": [
+            {
+              "frequency": 2496,
+              "namespace": "char",
+              "token": "京"
+            },
+            {
+              "frequency": 15,
+              "namespace": "char",
+              "token": "渲"
+            }
+          ],
+          "frequency": 11385,
+          "namespace": "char",
+          "token": "5"
+        },
+        {
+          "bucket": 25910,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "Ἑ"
+            },
+            {
+              "frequency": 14327,
+              "namespace": "char",
+              "token": "（"
+            }
+          ],
+          "frequency": 9578,
+          "namespace": "char",
+          "token": "第"
+        },
+        {
+          "bucket": 17582,
+          "collides_with": [
+            {
+              "frequency": 226,
+              "namespace": "char",
+              "token": "厄"
+            }
+          ],
+          "frequency": 9511,
+          "namespace": "char",
+          "token": "了"
+        },
+        {
+          "bucket": 25901,
+          "collides_with": [
+            {
+              "frequency": 1540,
+              "namespace": "char",
+              "token": "早"
+            }
+          ],
+          "frequency": 9488,
+          "namespace": "char",
+          "token": "斯"
+        },
+        {
+          "bucket": 23194,
+          "collides_with": [
+            {
+              "frequency": 11,
+              "namespace": "char",
+              "token": "け"
+            },
+            {
+              "frequency": 219,
+              "namespace": "char",
+              "token": "庚"
+            }
+          ],
+          "frequency": 9460,
+          "namespace": "char",
+          "token": "任"
+        },
+        {
+          "bucket": 25818,
+          "collides_with": [
+            {
+              "frequency": 6,
+              "namespace": "char",
+              "token": "濠"
+            }
+          ],
+          "frequency": 9393,
+          "namespace": "char",
+          "token": "用"
+        },
+        {
+          "bucket": 23010,
+          "collides_with": [
+            {
+              "frequency": 52,
+              "namespace": "char",
+              "token": "妨"
+            }
+          ],
+          "frequency": 9214,
+          "namespace": "char",
+          "token": "n"
+        },
+        {
+          "bucket": 15863,
+          "collides_with": [
+            {
+              "frequency": 293,
+              "namespace": "pinyin",
+              "token": "huan"
+            }
+          ],
+          "frequency": 9044,
+          "namespace": "char",
+          "token": "事"
+        },
+        {
+          "bucket": 8386,
+          "collides_with": [
+            {
+              "frequency": 74,
+              "namespace": "char",
+              "token": "岂"
+            }
+          ],
+          "frequency": 8501,
+          "namespace": "char",
+          "token": "长"
+        },
+        {
+          "bucket": 21025,
+          "collides_with": [
+            {
+              "frequency": 16,
+              "namespace": "char",
+              "token": "崭"
+            }
+          ],
+          "frequency": 7999,
+          "namespace": "char",
+          "token": "本"
+        },
+        {
+          "bucket": 12927,
+          "collides_with": [
+            {
+              "frequency": 1657,
+              "namespace": "char",
+              "token": "印"
+            }
+          ],
+          "frequency": 7580,
+          "namespace": "char",
+          "token": "北"
+        }
+      ],
+      "occupied_buckets": 7439,
+      "top100_tokens_with_collision": 26,
+      "unique_tokens": 8499,
+      "usable_hash_buckets": 32767
+    },
+    "4096": {
+      "colliding_buckets": 2520,
+      "collision_count": 4905,
+      "collision_rate": 0.5771267207906813,
+      "embedding_capacity": 4096,
+      "high_frequency_collisions": [
+        {
+          "bucket": 3875,
+          "collides_with": [
+            {
+              "frequency": 54,
+              "namespace": "char",
+              "token": "妄"
+            },
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "淸"
+            },
+            {
+              "frequency": 158,
+              "namespace": "char",
+              "token": "畜"
+            }
+          ],
+          "frequency": 121093,
+          "namespace": "char",
+          "token": "，"
+        },
+        {
+          "bucket": 3430,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "ざ"
+            },
+            {
+              "frequency": 2380,
+              "namespace": "char",
+              "token": "骨"
+            }
+          ],
+          "frequency": 64795,
+          "namespace": "char",
+          "token": "。"
+        },
+        {
+          "bucket": 1207,
+          "collides_with": [
+            {
+              "frequency": 37,
+              "namespace": "pinyin",
+              "token": "chai"
+            }
+          ],
+          "frequency": 39844,
+          "namespace": "char",
+          "token": "1"
+        },
+        {
+          "bucket": 3932,
+          "collides_with": [
+            {
+              "frequency": 8,
+              "namespace": "char",
+              "token": "猬"
+            }
+          ],
+          "frequency": 39394,
+          "namespace": "char",
+          "token": "年"
+        },
+        {
+          "bucket": 256,
+          "collides_with": [
+            {
+              "frequency": 83,
+              "namespace": "char",
+              "token": "溅"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "郾"
+            }
+          ],
+          "frequency": 35628,
+          "namespace": "char",
+          "token": "一"
+        },
+        {
+          "bucket": 3431,
+          "collides_with": [
+            {
+              "frequency": 21,
+              "namespace": "char",
+              "token": "妊"
+            },
+            {
+              "frequency": 1088,
+              "namespace": "char",
+              "token": "杀"
+            },
+            {
+              "frequency": 686,
+              "namespace": "char",
+              "token": "销"
+            }
+          ],
+          "frequency": 34232,
+          "namespace": "char",
+          "token": "\n"
+        },
+        {
+          "bucket": 1759,
+          "collides_with": [
+            {
+              "frequency": 1572,
+              "namespace": "char",
+              "token": "授"
+            }
+          ],
+          "frequency": 30853,
+          "namespace": "char",
+          "token": "0"
+        },
+        {
+          "bucket": 3368,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "ྷ"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "吣"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "噗"
+            },
+            {
+              "frequency": 167,
+              "namespace": "char",
+              "token": "撵"
+            }
+          ],
+          "frequency": 28957,
+          "namespace": "char",
+          "token": "2"
+        },
+        {
+          "bucket": 779,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "경"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "음"
+            }
+          ],
+          "frequency": 28818,
+          "namespace": "char",
+          "token": "中"
+        },
+        {
+          "bucket": 3806,
+          "collides_with": [
+            {
+              "frequency": 10,
+              "namespace": "char",
+              "token": "š"
+            },
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "饽"
+            }
+          ],
+          "frequency": 27650,
+          "namespace": "char",
+          "token": "国"
+        },
+        {
+          "bucket": 3490,
+          "collides_with": [
+            {
+              "frequency": 226,
+              "namespace": "char",
+              "token": "叛"
+            },
+            {
+              "frequency": 2950,
+              "namespace": "char",
+              "token": "职"
+            }
+          ],
+          "frequency": 27026,
+          "namespace": "char",
+          "token": "为"
+        },
+        {
+          "bucket": 2837,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "摭"
+            },
+            {
+              "frequency": 10,
+              "namespace": "char",
+              "token": "疢"
+            },
+            {
+              "frequency": 61,
+              "namespace": "char",
+              "token": "蚋"
+            }
+          ],
+          "frequency": 26364,
+          "namespace": "char",
+          "token": "、"
+        },
+        {
+          "bucket": 3975,
+          "collides_with": [
+            {
+              "frequency": 2305,
+              "namespace": "char",
+              "token": "底"
+            }
+          ],
+          "frequency": 24982,
+          "namespace": "char",
+          "token": "人"
+        },
+        {
+          "bucket": 1835,
+          "collides_with": [
+            {
+              "frequency": 60,
+              "namespace": "char",
+              "token": "靓"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "𫓽"
+            }
+          ],
+          "frequency": 24474,
+          "namespace": "char",
+          "token": "是"
+        },
+        {
+          "bucket": 2343,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "呯"
+            },
+            {
+              "frequency": 53,
+              "namespace": "char",
+              "token": "忤"
+            },
+            {
+              "frequency": 452,
+              "namespace": "char",
+              "token": "沃"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "镣"
+            }
+          ],
+          "frequency": 23775,
+          "namespace": "char",
+          "token": "在"
+        },
+        {
+          "bucket": 2765,
+          "collides_with": [
+            {
+              "frequency": 16,
+              "namespace": "char",
+              "token": "琰"
+            },
+            {
+              "frequency": 155,
+              "namespace": "char",
+              "token": "舒"
+            }
+          ],
+          "frequency": 22368,
+          "namespace": "char",
+          "token": "于"
+        },
+        {
+          "bucket": 777,
+          "collides_with": [
+            {
+              "frequency": 28,
+              "namespace": "char",
+              "token": "و"
+            },
+            {
+              "frequency": 3699,
+              "namespace": "char",
+              "token": "元"
+            },
+            {
+              "frequency": 332,
+              "namespace": "char",
+              "token": "浦"
+            }
+          ],
+          "frequency": 19495,
+          "namespace": "char",
+          "token": "）"
+        },
+        {
+          "bucket": 2201,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "晩"
+            }
+          ],
+          "frequency": 19380,
+          "namespace": "char",
+          "token": "9"
+        },
+        {
+          "bucket": 1273,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "咗"
+            },
+            {
+              "frequency": 219,
+              "namespace": "char",
+              "token": "蒸"
+            }
+          ],
+          "frequency": 18579,
+          "namespace": "char",
+          "token": "有"
+        },
+        {
+          "bucket": 25,
+          "collides_with": [
+            {
+              "frequency": 12,
+              "namespace": "char",
+              "token": "痪"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "睇"
+            }
+          ],
+          "frequency": 16438,
+          "namespace": "char",
+          "token": "学"
+        },
+        {
+          "bucket": 2394,
+          "collides_with": [
+            {
+              "frequency": 282,
+              "namespace": "char",
+              "token": "宅"
+            },
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "缄"
+            }
+          ],
+          "frequency": 14938,
+          "namespace": "char",
+          "token": "和"
+        },
+        {
+          "bucket": 1896,
+          "collides_with": [
+            {
+              "frequency": 105,
+              "namespace": "char",
+              "token": "酱"
+            }
+          ],
+          "frequency": 14421,
+          "namespace": "char",
+          "token": "时"
+        },
+        {
+          "bucket": 3482,
+          "collides_with": [
+            {
+              "frequency": 16,
+              "namespace": "char",
+              "token": "诩"
+            }
+          ],
+          "frequency": 14327,
+          "namespace": "char",
+          "token": "（"
+        },
+        {
+          "bucket": 3220,
+          "collides_with": [
+            {
+              "frequency": 8,
+              "namespace": "char",
+              "token": "殆"
+            }
+          ],
+          "frequency": 14290,
+          "namespace": "char",
+          "token": "月"
+        },
+        {
+          "bucket": 3340,
+          "collides_with": [
+            {
+              "frequency": 15,
+              "namespace": "char",
+              "token": "爇"
+            },
+            {
+              "frequency": 20,
+              "namespace": "char",
+              "token": "辙"
+            }
+          ],
+          "frequency": 14082,
+          "namespace": "char",
+          "token": "以"
+        },
+        {
+          "bucket": 2951,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "হ"
+            },
+            {
+              "frequency": 6,
+              "namespace": "char",
+              "token": "岖"
+            }
+          ],
+          "frequency": 14057,
+          "namespace": "char",
+          "token": "日"
+        },
+        {
+          "bucket": 1487,
+          "collides_with": [
+            {
+              "frequency": 11,
+              "namespace": "char",
+              "token": "镛"
+            }
+          ],
+          "frequency": 13798,
+          "namespace": "char",
+          "token": "成"
+        },
+        {
+          "bucket": 1778,
+          "collides_with": [
+            {
+              "frequency": 47,
+              "namespace": "char",
+              "token": "ん"
+            },
+            {
+              "frequency": 1987,
+              "namespace": "char",
+              "token": "木"
+            }
+          ],
+          "frequency": 13088,
+          "namespace": "char",
+          "token": "后"
+        },
+        {
+          "bucket": 2079,
+          "collides_with": [
+            {
+              "frequency": 168,
+              "namespace": "char",
+              "token": "栋"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "란"
+            }
+          ],
+          "frequency": 12925,
+          "namespace": "char",
+          "token": "会"
+        },
+        {
+          "bucket": 3385,
+          "collides_with": [
+            {
+              "frequency": 652,
+              "namespace": "char",
+              "token": "兹"
+            },
+            {
+              "frequency": 180,
+              "namespace": "char",
+              "token": "帐"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "鹱"
+            }
+          ],
+          "frequency": 12802,
+          "namespace": "char",
+          "token": "出"
+        },
+        {
+          "bucket": 2478,
+          "collides_with": [
+            {
+              "frequency": 50,
+              "namespace": "char",
+              "token": "宵"
+            },
+            {
+              "frequency": 36,
+              "namespace": "char",
+              "token": "甩"
+            }
+          ],
+          "frequency": 12513,
+          "namespace": "char",
+          "token": "e"
+        },
+        {
+          "bucket": 1857,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "þ"
+            },
+            {
+              "frequency": 236,
+              "namespace": "char",
+              "token": "怖"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "棩"
+            },
+            {
+              "frequency": 11,
+              "namespace": "char",
+              "token": "秧"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "跩"
+            }
+          ],
+          "frequency": 12504,
+          "namespace": "char",
+          "token": "公"
+        },
+        {
+          "bucket": 4000,
+          "collides_with": [
+            {
+              "frequency": 39,
+              "namespace": "char",
+              "token": "驼"
+            }
+          ],
+          "frequency": 12483,
+          "namespace": "char",
+          "token": "部"
+        },
+        {
+          "bucket": 2093,
+          "collides_with": [
+            {
+              "frequency": 127,
+              "namespace": "char",
+              "token": "戌"
+            },
+            {
+              "frequency": 331,
+              "namespace": "char",
+              "token": "拘"
+            },
+            {
+              "frequency": 1315,
+              "namespace": "char",
+              "token": "温"
+            },
+            {
+              "frequency": 8501,
+              "namespace": "char",
+              "token": "长"
+            }
+          ],
+          "frequency": 12039,
+          "namespace": "char",
+          "token": "不"
+        },
+        {
+          "bucket": 86,
+          "collides_with": [
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "ိ"
+            },
+            {
+              "frequency": 18,
+              "namespace": "char",
+              "token": "垓"
+            }
+          ],
+          "frequency": 11897,
+          "namespace": "char",
+          "token": "区"
+        },
+        {
+          "bucket": 2661,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "遛"
+            }
+          ],
+          "frequency": 11705,
+          "namespace": "char",
+          "token": "行"
+        },
+        {
+          "bucket": 943,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "庋"
+            }
+          ],
+          "frequency": 11674,
+          "namespace": "char",
+          "token": "上"
+        },
+        {
+          "bucket": 118,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "俵"
+            },
+            {
+              "frequency": 998,
+              "namespace": "char",
+              "token": "澳"
+            }
+          ],
+          "frequency": 11582,
+          "namespace": "char",
+          "token": "发"
+        },
+        {
+          "bucket": 3279,
+          "collides_with": [
+            {
+              "frequency": 35,
+              "namespace": "char",
+              "token": "ร"
+            },
+            {
+              "frequency": 47,
+              "namespace": "char",
+              "token": "牡"
+            }
+          ],
+          "frequency": 11472,
+          "namespace": "char",
+          "token": "法"
+        },
+        {
+          "bucket": 1785,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "埇"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "鍷"
+            }
+          ],
+          "frequency": 11448,
+          "namespace": "char",
+          "token": "个"
+        },
+        {
+          "bucket": 3892,
+          "collides_with": [
+            {
+              "frequency": 20,
+              "namespace": "char",
+              "token": "嗑"
+            },
+            {
+              "frequency": 175,
+              "namespace": "char",
+              "token": "囚"
+            },
+            {
+              "frequency": 10,
+              "namespace": "char",
+              "token": "昪"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "缜"
+            },
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "鸨"
+            }
+          ],
+          "frequency": 11385,
+          "namespace": "char",
+          "token": "5"
+        },
+        {
+          "bucket": 734,
+          "collides_with": [
+            {
+              "frequency": 40,
+              "namespace": "char",
+              "token": "砰"
+            },
+            {
+              "frequency": 14,
+              "namespace": "char",
+              "token": "诙"
+            }
+          ],
+          "frequency": 11064,
+          "namespace": "char",
+          "token": "3"
+        },
+        {
+          "bucket": 3397,
+          "collides_with": [
+            {
+              "frequency": 20,
+              "namespace": "char",
+              "token": "漕"
+            },
+            {
+              "frequency": 1604,
+              "namespace": "char",
+              "token": "续"
+            }
+          ],
+          "frequency": 11016,
+          "namespace": "char",
+          "token": "西"
+        },
+        {
+          "bucket": 3006,
+          "collides_with": [
+            {
+              "frequency": 24,
+              "namespace": "char",
+              "token": "レ"
+            },
+            {
+              "frequency": 116,
+              "namespace": "char",
+              "token": "寇"
+            },
+            {
+              "frequency": 691,
+              "namespace": "char",
+              "token": "杂"
+            },
+            {
+              "frequency": 7,
+              "namespace": "char",
+              "token": "犊"
+            },
+            {
+              "frequency": 392,
+              "namespace": "char",
+              "token": "薁"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "맥"
+            }
+          ],
+          "frequency": 11001,
+          "namespace": "char",
+          "token": "8"
+        },
+        {
+          "bucket": 3625,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "ǎ"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "Ⅴ"
+            }
+          ],
+          "frequency": 10885,
+          "namespace": "char",
+          "token": "与"
+        },
+        {
+          "bucket": 3793,
+          "collides_with": [
+            {
+              "frequency": 406,
+              "namespace": "char",
+              "token": "忒"
+            },
+            {
+              "frequency": 77,
+              "namespace": "char",
+              "token": "惹"
+            }
+          ],
+          "frequency": 10849,
+          "namespace": "char",
+          "token": "名"
+        },
+        {
+          "bucket": 3048,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "ܟ"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "ễ"
+            },
+            {
+              "frequency": 125,
+              "namespace": "char",
+              "token": "润"
+            },
+            {
+              "frequency": 11,
+              "namespace": "char",
+              "token": "糨"
+            }
+          ],
+          "frequency": 10797,
+          "namespace": "char",
+          "token": "主"
+        },
+        {
+          "bucket": 566,
+          "collides_with": [
+            {
+              "frequency": 12,
+              "namespace": "char",
+              "token": "Т"
+            },
+            {
+              "frequency": 368,
+              "namespace": "char",
+              "token": "倍"
+            },
+            {
+              "frequency": 15,
+              "namespace": "char",
+              "token": "藟"
+            },
+            {
+              "frequency": 15,
+              "namespace": "char",
+              "token": "衞"
+            }
+          ],
+          "frequency": 10546,
+          "namespace": "char",
+          "token": "位"
+        },
+        {
+          "bucket": 1890,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "戢"
+            }
+          ],
+          "frequency": 10531,
+          "namespace": "char",
+          "token": "4"
+        },
+        {
+          "bucket": 3401,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "氘"
+            }
+          ],
+          "frequency": 10214,
+          "namespace": "char",
+          "token": "市"
+        },
+        {
+          "bucket": 3011,
+          "collides_with": [
+            {
+              "frequency": 2105,
+              "namespace": "char",
+              "token": "y"
+            },
+            {
+              "frequency": 2246,
+              "namespace": "char",
+              "token": "质"
+            }
+          ],
+          "frequency": 9828,
+          "namespace": "char",
+          "token": "之"
+        },
+        {
+          "bucket": 1452,
+          "collides_with": [
+            {
+              "frequency": 34,
+              "namespace": "char",
+              "token": "ö"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "ཨ"
+            },
+            {
+              "frequency": 5971,
+              "namespace": "char",
+              "token": "合"
+            },
+            {
+              "frequency": 465,
+              "namespace": "char",
+              "token": "贞"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "밤"
+            }
+          ],
+          "frequency": 9733,
+          "namespace": "char",
+          "token": "6"
+        },
+        {
+          "bucket": 923,
+          "collides_with": [
+            {
+              "frequency": 1002,
+              "namespace": "char",
+              "token": "似"
+            },
+            {
+              "frequency": 715,
+              "namespace": "char",
+              "token": "虎"
+            }
+          ],
+          "frequency": 9580,
+          "namespace": "char",
+          "token": "分"
+        },
+        {
+          "bucket": 3343,
+          "collides_with": [
+            {
+              "frequency": 510,
+              "namespace": "char",
+              "token": "凤"
+            },
+            {
+              "frequency": 70,
+              "namespace": "char",
+              "token": "姨"
+            },
+            {
+              "frequency": 242,
+              "namespace": "char",
+              "token": "裸"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "연"
+            }
+          ],
+          "frequency": 9579,
+          "namespace": "char",
+          "token": "家"
+        },
+        {
+          "bucket": 2649,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "ṣ"
+            },
+            {
+              "frequency": 966,
+              "namespace": "char",
+              "token": "埃"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "瓌"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "瘿"
+            }
+          ],
+          "frequency": 9578,
+          "namespace": "char",
+          "token": "第"
+        },
+        {
+          "bucket": 530,
+          "collides_with": [
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "ᡤ"
+            },
+            {
+              "frequency": 2711,
+              "namespace": "char",
+              "token": "儿"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "咿"
+            }
+          ],
+          "frequency": 9511,
+          "namespace": "char",
+          "token": "了"
+        },
+        {
+          "bucket": 2887,
+          "collides_with": [
+            {
+              "frequency": 9,
+              "namespace": "char",
+              "token": "纭"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "豳"
+            }
+          ],
+          "frequency": 9492,
+          "namespace": "char",
+          "token": "i"
+        },
+        {
+          "bucket": 2479,
+          "collides_with": [
+            {
+              "frequency": 794,
+              "namespace": "char",
+              "token": "沿"
+            },
+            {
+              "frequency": 40,
+              "namespace": "char",
+              "token": "璧"
+            },
+            {
+              "frequency": 132,
+              "namespace": "char",
+              "token": "筒"
+            },
+            {
+              "frequency": 107,
+              "namespace": "char",
+              "token": "躺"
+            }
+          ],
+          "frequency": 9488,
+          "namespace": "char",
+          "token": "斯"
+        },
+        {
+          "bucket": 716,
+          "collides_with": [
+            {
+              "frequency": 238,
+              "namespace": "char",
+              "token": "妮"
+            },
+            {
+              "frequency": 1615,
+              "namespace": "pinyin",
+              "token": "er"
+            }
+          ],
+          "frequency": 9480,
+          "namespace": "char",
+          "token": "尔"
+        },
+        {
+          "bucket": 1291,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "변"
+            }
+          ],
+          "frequency": 9460,
+          "namespace": "char",
+          "token": "任"
+        },
+        {
+          "bucket": 4055,
+          "collides_with": [
+            {
+              "frequency": 51,
+              "namespace": "char",
+              "token": "朊"
+            }
+          ],
+          "frequency": 9375,
+          "namespace": "char",
+          "token": "子"
+        },
+        {
+          "bucket": 1615,
+          "collides_with": [
+            {
+              "frequency": 608,
+              "namespace": "char",
+              "token": "爆"
+            },
+            {
+              "frequency": 6905,
+              "namespace": "char",
+              "token": "由"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "礩"
+            }
+          ],
+          "frequency": 9347,
+          "namespace": "char",
+          "token": "7"
+        },
+        {
+          "bucket": 2227,
+          "collides_with": [
+            {
+              "frequency": 35,
+              "namespace": "char",
+              "token": "瀛"
+            }
+          ],
+          "frequency": 9214,
+          "namespace": "char",
+          "token": "n"
+        },
+        {
+          "bucket": 922,
+          "collides_with": [
+            {
+              "frequency": 1424,
+              "namespace": "char",
+              "token": "显"
+            },
+            {
+              "frequency": 3300,
+              "namespace": "char",
+              "token": "曾"
+            }
+          ],
+          "frequency": 9062,
+          "namespace": "char",
+          "token": "o"
+        },
+        {
+          "bucket": 2380,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "យ"
+            },
+            {
+              "frequency": 5002,
+              "namespace": "char",
+              "token": "级"
+            },
+            {
+              "frequency": 100,
+              "namespace": "char",
+              "token": "诵"
+            }
+          ],
+          "frequency": 8930,
+          "namespace": "char",
+          "token": "他"
+        },
+        {
+          "bucket": 4033,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "帡"
+            },
+            {
+              "frequency": 35,
+              "namespace": "char",
+              "token": "浚"
+            },
+            {
+              "frequency": 33,
+              "namespace": "char",
+              "token": "瘩"
+            },
+            {
+              "frequency": 26,
+              "namespace": "char",
+              "token": "瞟"
+            },
+            {
+              "frequency": 9,
+              "namespace": "char",
+              "token": "胙"
+            },
+            {
+              "frequency": 699,
+              "namespace": "char",
+              "token": "训"
+            }
+          ],
+          "frequency": 8775,
+          "namespace": "char",
+          "token": "南"
+        },
+        {
+          "bucket": 1713,
+          "collides_with": [
+            {
+              "frequency": 1414,
+              "namespace": "char",
+              "token": "征"
+            },
+            {
+              "frequency": 225,
+              "namespace": "char",
+              "token": "疮"
+            },
+            {
+              "frequency": 12,
+              "namespace": "char",
+              "token": "筱"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "趄"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "黧"
+            }
+          ],
+          "frequency": 8727,
+          "namespace": "char",
+          "token": "r"
+        },
+        {
+          "bucket": 2467,
+          "collides_with": [
+            {
+              "frequency": 1771,
+              "namespace": "char",
+              "token": "乡"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "毎"
+            },
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "砭"
+            }
+          ],
+          "frequency": 8663,
+          "namespace": "char",
+          "token": "其"
+        },
+        {
+          "bucket": 2093,
+          "collides_with": [
+            {
+              "frequency": 12039,
+              "namespace": "char",
+              "token": "不"
+            },
+            {
+              "frequency": 127,
+              "namespace": "char",
+              "token": "戌"
+            },
+            {
+              "frequency": 331,
+              "namespace": "char",
+              "token": "拘"
+            },
+            {
+              "frequency": 1315,
+              "namespace": "char",
+              "token": "温"
+            }
+          ],
+          "frequency": 8501,
+          "namespace": "char",
+          "token": "长"
+        },
+        {
+          "bucket": 1508,
+          "collides_with": [
+            {
+              "frequency": 6,
+              "namespace": "char",
+              "token": "啾"
+            },
+            {
+              "frequency": 14,
+              "namespace": "char",
+              "token": "雒"
+            },
+            {
+              "frequency": 234,
+              "namespace": "char",
+              "token": "霞"
+            }
+          ],
+          "frequency": 8323,
+          "namespace": "char",
+          "token": "政"
+        },
+        {
+          "bucket": 1384,
+          "collides_with": [
+            {
+              "frequency": 21,
+              "namespace": "char",
+              "token": "く"
+            },
+            {
+              "frequency": 573,
+              "namespace": "char",
+              "token": "径"
+            },
+            {
+              "frequency": 36,
+              "namespace": "char",
+              "token": "肱"
+            }
+          ],
+          "frequency": 8241,
+          "namespace": "char",
+          "token": "十"
+        },
+        {
+          "bucket": 2510,
+          "collides_with": [
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "¥"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "奨"
+            },
+            {
+              "frequency": 27,
+              "namespace": "char",
+              "token": "屹"
+            },
+            {
+              "frequency": 75,
+              "namespace": "char",
+              "token": "缸"
+            }
+          ],
+          "frequency": 8184,
+          "namespace": "char",
+          "token": "东"
+        },
+        {
+          "bucket": 1586,
+          "collides_with": [
+            {
+              "frequency": 23,
+              "namespace": "char",
+              "token": "糜"
+            }
+          ],
+          "frequency": 8025,
+          "namespace": "char",
+          "token": "到"
+        },
+        {
+          "bucket": 2896,
+          "collides_with": [
+            {
+              "frequency": 148,
+              "namespace": "char",
+              "token": "盅"
+            },
+            {
+              "frequency": 27,
+              "namespace": "char",
+              "token": "釜"
+            }
+          ],
+          "frequency": 8008,
+          "namespace": "char",
+          "token": "同"
+        },
+        {
+          "bucket": 2062,
+          "collides_with": [
+            {
+              "frequency": 869,
+              "namespace": "char",
+              "token": "映"
+            },
+            {
+              "frequency": 14,
+              "namespace": "char",
+              "token": "渚"
+            },
+            {
+              "frequency": 8,
+              "namespace": "char",
+              "token": "醮"
+            }
+          ],
+          "frequency": 7999,
+          "namespace": "char",
+          "token": "本"
+        },
+        {
+          "bucket": 334,
+          "collides_with": [
+            {
+              "frequency": 153,
+              "namespace": "char",
+              "token": "娘"
+            }
+          ],
+          "frequency": 7997,
+          "namespace": "char",
+          "token": "省"
+        },
+        {
+          "bucket": 3638,
+          "collides_with": [
+            {
+              "frequency": 17,
+              "namespace": "char",
+              "token": "偃"
+            },
+            {
+              "frequency": 40,
+              "namespace": "char",
+              "token": "悖"
+            }
+          ],
+          "frequency": 7899,
+          "namespace": "char",
+          "token": "三"
+        },
+        {
+          "bucket": 2516,
+          "collides_with": [
+            {
+              "frequency": 25,
+              "namespace": "char",
+              "token": "د"
+            }
+          ],
+          "frequency": 7894,
+          "namespace": "char",
+          "token": "民"
+        },
+        {
+          "bucket": 2690,
+          "collides_with": [
+            {
+              "frequency": 537,
+              "namespace": "char",
+              "token": "靠"
+            }
+          ],
+          "frequency": 7740,
+          "namespace": "char",
+          "token": "理"
+        },
+        {
+          "bucket": 2137,
+          "collides_with": [
+            {
+              "frequency": 4719,
+              "namespace": "char",
+              "token": "u"
+            },
+            {
+              "frequency": 40,
+              "namespace": "char",
+              "token": "嘟"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "徇"
+            },
+            {
+              "frequency": 58,
+              "namespace": "char",
+              "token": "羌"
+            }
+          ],
+          "frequency": 7731,
+          "namespace": "char",
+          "token": "里"
+        },
+        {
+          "bucket": 3392,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "〞"
+            },
+            {
+              "frequency": 48,
+              "namespace": "char",
+              "token": "吮"
+            },
+            {
+              "frequency": 6365,
+              "namespace": "char",
+              "token": "小"
+            }
+          ],
+          "frequency": 7661,
+          "namespace": "char",
+          "token": "开"
+        },
+        {
+          "bucket": 2689,
+          "collides_with": [
+            {
+              "frequency": 382,
+              "namespace": "char",
+              "token": "侵"
+            },
+            {
+              "frequency": 229,
+              "namespace": "char",
+              "token": "帖"
+            },
+            {
+              "frequency": 128,
+              "namespace": "char",
+              "token": "悠"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "縡"
+            }
+          ],
+          "frequency": 7549,
+          "namespace": "char",
+          "token": "员"
+        },
+        {
+          "bucket": 3352,
+          "collides_with": [
+            {
+              "frequency": 32,
+              "namespace": "char",
+              "token": "岱"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "滉"
+            }
+          ],
+          "frequency": 7520,
+          "namespace": "pinyin",
+          "token": "shi"
+        },
+        {
+          "bucket": 149,
+          "collides_with": [
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "ヲ"
+            },
+            {
+              "frequency": 2872,
+              "namespace": "char",
+              "token": "命"
+            },
+            {
+              "frequency": 1415,
+              "namespace": "char",
+              "token": "层"
+            },
+            {
+              "frequency": 12,
+              "namespace": "char",
+              "token": "김"
+            }
+          ],
+          "frequency": 7332,
+          "namespace": "char",
+          "token": "被"
+        },
+        {
+          "bucket": 1088,
+          "collides_with": [
+            {
+              "frequency": 87,
+              "namespace": "char",
+              "token": "䴓"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "燿"
+            },
+            {
+              "frequency": 57,
+              "namespace": "char",
+              "token": "璋"
+            }
+          ],
+          "frequency": 7310,
+          "namespace": "char",
+          "token": "文"
+        },
+        {
+          "bucket": 1753,
+          "collides_with": [
+            {
+              "frequency": 10,
+              "namespace": "char",
+              "token": "Г"
+            },
+            {
+              "frequency": 830,
+              "namespace": "char",
+              "token": "佳"
+            },
+            {
+              "frequency": 81,
+              "namespace": "char",
+              "token": "捞"
+            },
+            {
+              "frequency": 10,
+              "namespace": "char",
+              "token": "泚"
+            },
+            {
+              "frequency": 1066,
+              "namespace": "char",
+              "token": "热"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "玕"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "锔"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "𐤉"
+            }
+          ],
+          "frequency": 7234,
+          "namespace": "char",
+          "token": "及"
+        }
+      ],
+      "occupied_buckets": 3594,
+      "top100_tokens_with_collision": 86,
+      "unique_tokens": 8499,
+      "usable_hash_buckets": 4095
+    },
+    "8192": {
+      "colliding_buckets": 2262,
+      "collision_count": 3208,
+      "collision_rate": 0.3774561713142723,
+      "embedding_capacity": 8192,
+      "high_frequency_collisions": [
+        {
+          "bucket": 7102,
+          "collides_with": [
+            {
+              "frequency": 1685,
+              "namespace": "char",
+              "token": "供"
+            },
+            {
+              "frequency": 7,
+              "namespace": "char",
+              "token": "砷"
+            },
+            {
+              "frequency": 122,
+              "namespace": "char",
+              "token": "龈"
+            }
+          ],
+          "frequency": 121093,
+          "namespace": "char",
+          "token": "，"
+        },
+        {
+          "bucket": 2336,
+          "collides_with": [
+            {
+              "frequency": 5178,
+              "namespace": "pinyin",
+              "token": "yi"
+            }
+          ],
+          "frequency": 69220,
+          "namespace": "char",
+          "token": "的"
+        },
+        {
+          "bucket": 7524,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "檖"
+            }
+          ],
+          "frequency": 64795,
+          "namespace": "char",
+          "token": "。"
+        },
+        {
+          "bucket": 4188,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "薹"
+            }
+          ],
+          "frequency": 39844,
+          "namespace": "char",
+          "token": "1"
+        },
+        {
+          "bucket": 3512,
+          "collides_with": [
+            {
+              "frequency": 97,
+              "namespace": "char",
+              "token": "巫"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "髀"
+            }
+          ],
+          "frequency": 39394,
+          "namespace": "char",
+          "token": "年"
+        },
+        {
+          "bucket": 7228,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "ʻ"
+            },
+            {
+              "frequency": 1954,
+              "namespace": "char",
+              "token": "调"
+            }
+          ],
+          "frequency": 35628,
+          "namespace": "char",
+          "token": "一"
+        },
+        {
+          "bucket": 6869,
+          "collides_with": [
+            {
+              "frequency": 12,
+              "namespace": "char",
+              "token": "堇"
+            },
+            {
+              "frequency": 2208,
+              "namespace": "char",
+              "token": "戏"
+            },
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "淌"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "𠌯"
+            }
+          ],
+          "frequency": 34232,
+          "namespace": "char",
+          "token": "\n"
+        },
+        {
+          "bucket": 5263,
+          "collides_with": [
+            {
+              "frequency": 115,
+              "namespace": "char",
+              "token": "л"
+            },
+            {
+              "frequency": 186,
+              "namespace": "char",
+              "token": "饿"
+            }
+          ],
+          "frequency": 30853,
+          "namespace": "char",
+          "token": "0"
+        },
+        {
+          "bucket": 974,
+          "collides_with": [
+            {
+              "frequency": 842,
+              "namespace": "char",
+              "token": "松"
+            }
+          ],
+          "frequency": 28957,
+          "namespace": "char",
+          "token": "2"
+        },
+        {
+          "bucket": 7440,
+          "collides_with": [
+            {
+              "frequency": 34,
+              "namespace": "char",
+              "token": "沫"
+            }
+          ],
+          "frequency": 28818,
+          "namespace": "char",
+          "token": "中"
+        },
+        {
+          "bucket": 6605,
+          "collides_with": [
+            {
+              "frequency": 346,
+              "namespace": "char",
+              "token": "劫"
+            }
+          ],
+          "frequency": 27650,
+          "namespace": "char",
+          "token": "国"
+        },
+        {
+          "bucket": 6304,
+          "collides_with": [
+            {
+              "frequency": 96,
+              "namespace": "char",
+              "token": "奢"
+            },
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "嫣"
+            }
+          ],
+          "frequency": 27026,
+          "namespace": "char",
+          "token": "为"
+        },
+        {
+          "bucket": 4566,
+          "collides_with": [
+            {
+              "frequency": 672,
+              "namespace": "char",
+              "token": "缩"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "膑"
+            }
+          ],
+          "frequency": 26364,
+          "namespace": "char",
+          "token": "、"
+        },
+        {
+          "bucket": 5784,
+          "collides_with": [
+            {
+              "frequency": 202,
+              "namespace": "char",
+              "token": "凹"
+            }
+          ],
+          "frequency": 22368,
+          "namespace": "char",
+          "token": "于"
+        },
+        {
+          "bucket": 859,
+          "collides_with": [
+            {
+              "frequency": 7,
+              "namespace": "char",
+              "token": "蒾"
+            }
+          ],
+          "frequency": 19380,
+          "namespace": "char",
+          "token": "9"
+        },
+        {
+          "bucket": 3020,
+          "collides_with": [
+            {
+              "frequency": 16,
+              "namespace": "char",
+              "token": "π"
+            }
+          ],
+          "frequency": 18579,
+          "namespace": "char",
+          "token": "有"
+        },
+        {
+          "bucket": 5994,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "ཡ"
+            }
+          ],
+          "frequency": 16438,
+          "namespace": "char",
+          "token": "学"
+        },
+        {
+          "bucket": 432,
+          "collides_with": [
+            {
+              "frequency": 390,
+              "namespace": "char",
+              "token": "础"
+            },
+            {
+              "frequency": 17,
+              "namespace": "char",
+              "token": "蟪"
+            }
+          ],
+          "frequency": 14901,
+          "namespace": "char",
+          "token": "地"
+        },
+        {
+          "bucket": 6539,
+          "collides_with": [
+            {
+              "frequency": 131,
+              "namespace": "char",
+              "token": "毵"
+            },
+            {
+              "frequency": 135,
+              "namespace": "char",
+              "token": "泪"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "舯"
+            }
+          ],
+          "frequency": 14421,
+          "namespace": "char",
+          "token": "时"
+        },
+        {
+          "bucket": 4718,
+          "collides_with": [
+            {
+              "frequency": 329,
+              "namespace": "char",
+              "token": "揩"
+            }
+          ],
+          "frequency": 14327,
+          "namespace": "char",
+          "token": "（"
+        },
+        {
+          "bucket": 2761,
+          "collides_with": [
+            {
+              "frequency": 2628,
+              "namespace": "char",
+              "token": "局"
+            },
+            {
+              "frequency": 7,
+              "namespace": "char",
+              "token": "牂"
+            }
+          ],
+          "frequency": 14290,
+          "namespace": "char",
+          "token": "月"
+        },
+        {
+          "bucket": 4857,
+          "collides_with": [
+            {
+              "frequency": 658,
+              "namespace": "char",
+              "token": "尺"
+            },
+            {
+              "frequency": 8,
+              "namespace": "char",
+              "token": "龋"
+            }
+          ],
+          "frequency": 14057,
+          "namespace": "char",
+          "token": "日"
+        },
+        {
+          "bucket": 1560,
+          "collides_with": [
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "鳜"
+            }
+          ],
+          "frequency": 13088,
+          "namespace": "char",
+          "token": "后"
+        },
+        {
+          "bucket": 7422,
+          "collides_with": [
+            {
+              "frequency": 112,
+              "namespace": "char",
+              "token": "勾"
+            },
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "绂"
+            },
+            {
+              "frequency": 14,
+              "namespace": "char",
+              "token": "邡"
+            }
+          ],
+          "frequency": 12483,
+          "namespace": "char",
+          "token": "部"
+        },
+        {
+          "bucket": 4550,
+          "collides_with": [
+            {
+              "frequency": 86,
+              "namespace": "char",
+              "token": "戎"
+            }
+          ],
+          "frequency": 12153,
+          "namespace": "char",
+          "token": "a"
+        },
+        {
+          "bucket": 4201,
+          "collides_with": [
+            {
+              "frequency": 5,
+              "namespace": "char",
+              "token": "蓊"
+            }
+          ],
+          "frequency": 11674,
+          "namespace": "char",
+          "token": "上"
+        },
+        {
+          "bucket": 1337,
+          "collides_with": [
+            {
+              "frequency": 2542,
+              "namespace": "pinyin",
+              "token": "ren"
+            }
+          ],
+          "frequency": 11472,
+          "namespace": "char",
+          "token": "法"
+        },
+        {
+          "bucket": 4435,
+          "collides_with": [
+            {
+              "frequency": 33,
+              "namespace": "char",
+              "token": "→"
+            },
+            {
+              "frequency": 23,
+              "namespace": "char",
+              "token": "莆"
+            }
+          ],
+          "frequency": 11448,
+          "namespace": "char",
+          "token": "个"
+        },
+        {
+          "bucket": 6592,
+          "collides_with": [
+            {
+              "frequency": 24,
+              "namespace": "char",
+              "token": "豁"
+            }
+          ],
+          "frequency": 11385,
+          "namespace": "char",
+          "token": "5"
+        },
+        {
+          "bucket": 2193,
+          "collides_with": [
+            {
+              "frequency": 1982,
+              "namespace": "char",
+              "token": "纳"
+            }
+          ],
+          "frequency": 11064,
+          "namespace": "char",
+          "token": "3"
+        },
+        {
+          "bucket": 1095,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "筚"
+            },
+            {
+              "frequency": 286,
+              "namespace": "pinyin",
+              "token": "gou"
+            }
+          ],
+          "frequency": 11016,
+          "namespace": "char",
+          "token": "西"
+        },
+        {
+          "bucket": 6413,
+          "collides_with": [
+            {
+              "frequency": 21,
+              "namespace": "char",
+              "token": "お"
+            },
+            {
+              "frequency": 13,
+              "namespace": "char",
+              "token": "扼"
+            },
+            {
+              "frequency": 380,
+              "namespace": "char",
+              "token": "纹"
+            }
+          ],
+          "frequency": 10885,
+          "namespace": "char",
+          "token": "与"
+        },
+        {
+          "bucket": 4881,
+          "collides_with": [
+            {
+              "frequency": 84,
+              "namespace": "char",
+              "token": "嘿"
+            }
+          ],
+          "frequency": 10797,
+          "namespace": "char",
+          "token": "主"
+        },
+        {
+          "bucket": 8031,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "ங"
+            },
+            {
+              "frequency": 357,
+              "namespace": "char",
+              "token": "棕"
+            }
+          ],
+          "frequency": 10531,
+          "namespace": "char",
+          "token": "4"
+        },
+        {
+          "bucket": 6780,
+          "collides_with": [
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "め"
+            },
+            {
+              "frequency": 1464,
+              "namespace": "char",
+              "token": "状"
+            },
+            {
+              "frequency": 58,
+              "namespace": "char",
+              "token": "璐"
+            }
+          ],
+          "frequency": 10214,
+          "namespace": "char",
+          "token": "市"
+        },
+        {
+          "bucket": 2015,
+          "collides_with": [
+            {
+              "frequency": 20,
+              "namespace": "char",
+              "token": "晗"
+            }
+          ],
+          "frequency": 9935,
+          "namespace": "char",
+          "token": "作"
+        },
+        {
+          "bucket": 4163,
+          "collides_with": [
+            {
+              "frequency": 5171,
+              "namespace": "char",
+              "token": "化"
+            },
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "琚"
+            },
+            {
+              "frequency": 80,
+              "namespace": "char",
+              "token": "鸽"
+            }
+          ],
+          "frequency": 9935,
+          "namespace": "char",
+          "token": "过"
+        },
+        {
+          "bucket": 8118,
+          "collides_with": [
+            {
+              "frequency": 415,
+              "namespace": "char",
+              "token": "戒"
+            }
+          ],
+          "frequency": 9580,
+          "namespace": "char",
+          "token": "分"
+        },
+        {
+          "bucket": 4467,
+          "collides_with": [
+            {
+              "frequency": 18,
+              "namespace": "char",
+              "token": "啄"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "缜"
+            }
+          ],
+          "frequency": 9578,
+          "namespace": "char",
+          "token": "第"
+        },
+        {
+          "bucket": 1787,
+          "collides_with": [
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "総"
+            },
+            {
+              "frequency": 15,
+              "namespace": "char",
+              "token": "谙"
+            }
+          ],
+          "frequency": 9511,
+          "namespace": "char",
+          "token": "了"
+        },
+        {
+          "bucket": 1504,
+          "collides_with": [
+            {
+              "frequency": 95,
+              "namespace": "char",
+              "token": "肆"
+            }
+          ],
+          "frequency": 9492,
+          "namespace": "char",
+          "token": "i"
+        },
+        {
+          "bucket": 4519,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "巇"
+            }
+          ],
+          "frequency": 9460,
+          "namespace": "char",
+          "token": "任"
+        },
+        {
+          "bucket": 4119,
+          "collides_with": [
+            {
+              "frequency": 37,
+              "namespace": "char",
+              "token": "荪"
+            }
+          ],
+          "frequency": 9375,
+          "namespace": "char",
+          "token": "子"
+        },
+        {
+          "bucket": 975,
+          "collides_with": [
+            {
+              "frequency": 4130,
+              "namespace": "char",
+              "token": "交"
+            },
+            {
+              "frequency": 36,
+              "namespace": "char",
+              "token": "渭"
+            }
+          ],
+          "frequency": 9214,
+          "namespace": "char",
+          "token": "n"
+        },
+        {
+          "bucket": 1074,
+          "collides_with": [
+            {
+              "frequency": 3699,
+              "namespace": "char",
+              "token": "元"
+            },
+            {
+              "frequency": 7085,
+              "namespace": "char",
+              "token": "物"
+            },
+            {
+              "frequency": 571,
+              "namespace": "char",
+              "token": "鸟"
+            }
+          ],
+          "frequency": 9062,
+          "namespace": "char",
+          "token": "o"
+        },
+        {
+          "bucket": 220,
+          "collides_with": [
+            {
+              "frequency": 84,
+              "namespace": "char",
+              "token": "悄"
+            },
+            {
+              "frequency": 2540,
+              "namespace": "char",
+              "token": "游"
+            },
+            {
+              "frequency": 317,
+              "namespace": "char",
+              "token": "荒"
+            }
+          ],
+          "frequency": 9044,
+          "namespace": "char",
+          "token": "事"
+        },
+        {
+          "bucket": 1913,
+          "collides_with": [
+            {
+              "frequency": 1880,
+              "namespace": "char",
+              "token": "博"
+            },
+            {
+              "frequency": 9,
+              "namespace": "char",
+              "token": "怃"
+            },
+            {
+              "frequency": 9,
+              "namespace": "char",
+              "token": "泓"
+            },
+            {
+              "frequency": 181,
+              "namespace": "char",
+              "token": "溜"
+            }
+          ],
+          "frequency": 8930,
+          "namespace": "char",
+          "token": "他"
+        },
+        {
+          "bucket": 4540,
+          "collides_with": [
+            {
+              "frequency": 360,
+              "namespace": "char",
+              "token": "尸"
+            }
+          ],
+          "frequency": 8775,
+          "namespace": "char",
+          "token": "南"
+        },
+        {
+          "bucket": 7618,
+          "collides_with": [
+            {
+              "frequency": 38,
+              "namespace": "char",
+              "token": "钗"
+            },
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "휘"
+            }
+          ],
+          "frequency": 8752,
+          "namespace": "char",
+          "token": "下"
+        },
+        {
+          "bucket": 6501,
+          "collides_with": [
+            {
+              "frequency": 12,
+              "namespace": "char",
+              "token": "憧"
+            },
+            {
+              "frequency": 2834,
+              "namespace": "char",
+              "token": "没"
+            }
+          ],
+          "frequency": 8727,
+          "namespace": "char",
+          "token": "r"
+        },
+        {
+          "bucket": 24,
+          "collides_with": [
+            {
+              "frequency": 18,
+              "namespace": "char",
+              "token": "聋"
+            },
+            {
+              "frequency": 10,
+              "namespace": "char",
+              "token": "陬"
+            }
+          ],
+          "frequency": 8663,
+          "namespace": "char",
+          "token": "其"
+        },
+        {
+          "bucket": 196,
+          "collides_with": [
+            {
+              "frequency": 145,
+              "namespace": "char",
+              "token": "兔"
+            }
+          ],
+          "frequency": 8241,
+          "namespace": "char",
+          "token": "十"
+        },
+        {
+          "bucket": 1163,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "ظ"
+            },
+            {
+              "frequency": 3,
+              "namespace": "char",
+              "token": "寷"
+            },
+            {
+              "frequency": 1104,
+              "namespace": "pinyin",
+              "token": "fen"
+            }
+          ],
+          "frequency": 8209,
+          "namespace": "char",
+          "token": "语"
+        },
+        {
+          "bucket": 1296,
+          "collides_with": [
+            {
+              "frequency": 4,
+              "namespace": "char",
+              "token": "唰"
+            }
+          ],
+          "frequency": 8184,
+          "namespace": "char",
+          "token": "东"
+        },
+        {
+          "bucket": 208,
+          "collides_with": [
+            {
+              "frequency": 633,
+              "namespace": "char",
+              "token": "启"
+            }
+          ],
+          "frequency": 8025,
+          "namespace": "char",
+          "token": "到"
+        },
+        {
+          "bucket": 5384,
+          "collides_with": [
+            {
+              "frequency": 6202,
+              "namespace": "char",
+              "token": "》"
+            },
+            {
+              "frequency": 599,
+              "namespace": "char",
+              "token": "切"
+            },
+            {
+              "frequency": 36,
+              "namespace": "char",
+              "token": "阆"
+            }
+          ],
+          "frequency": 8008,
+          "namespace": "char",
+          "token": "同"
+        },
+        {
+          "bucket": 1381,
+          "collides_with": [
+            {
+              "frequency": 1037,
+              "namespace": "char",
+              "token": "素"
+            },
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "鎏"
+            }
+          ],
+          "frequency": 7999,
+          "namespace": "char",
+          "token": "本"
+        },
+        {
+          "bucket": 246,
+          "collides_with": [
+            {
+              "frequency": 11,
+              "namespace": "char",
+              "token": "ע"
+            },
+            {
+              "frequency": 5600,
+              "namespace": "char",
+              "token": "式"
+            }
+          ],
+          "frequency": 7740,
+          "namespace": "char",
+          "token": "理"
+        },
+        {
+          "bucket": 2511,
+          "collides_with": [
+            {
+              "frequency": 1,
+              "namespace": "char",
+              "token": "변"
+            }
+          ],
+          "frequency": 7661,
+          "namespace": "char",
+          "token": "开"
+        },
+        {
+          "bucket": 3187,
+          "collides_with": [
+            {
+              "frequency": 2,
+              "namespace": "char",
+              "token": "礜"
+            }
+          ],
+          "frequency": 7580,
+          "namespace": "char",
+          "token": "北"
+        },
+        {
+          "bucket": 2972,
+          "collides_with": [
+            {
+              "frequency": 41,
+              "namespace": "char",
+              "token": "棍"
+            },
+            {
+              "frequency": 135,
+              "namespace": "pinyin",
+              "token": "bang"
+            }
+          ],
+          "frequency": 7520,
+          "namespace": "pinyin",
+          "token": "shi"
+        },
+        {
+          "bucket": 6116,
+          "collides_with": [
+            {
+              "frequency": 13,
+              "namespace": "char",
+              "token": "遏"
+            }
+          ],
+          "frequency": 7310,
+          "namespace": "char",
+          "token": "文"
+        },
+        {
+          "bucket": 2249,
+          "collides_with": [
+            {
+              "frequency": 82,
+              "namespace": "char",
+              "token": "叮"
+            }
+          ],
+          "frequency": 7234,
+          "namespace": "char",
+          "token": "及"
+        }
+      ],
+      "occupied_buckets": 5291,
+      "top100_tokens_with_collision": 63,
+      "unique_tokens": 8499,
+      "usable_hash_buckets": 8191
+    }
+  },
+  "pinyin_token_occurrences": 221473,
+  "schema_version": 1,
+  "train_dataset": "/root/autodl-tmp/tiny-rime-reranker/datasets/TinyRime-Context-v1/ranking-k8/train.jsonl.zst",
+  "train_dataset_sha256": "a6fd15a6a8695786f71393fc15bc56640e1f428dc02d0eddad5e082cfd25d3c6",
+  "unique_character_tokens": 8105,
+  "unique_han_characters": 6739,
+  "unique_pinyin_syllables": 394,
+  "unknown_candidate_type_occurrences": 0
+}

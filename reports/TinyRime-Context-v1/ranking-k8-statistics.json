@@ -1,0 +1,47 @@
+{
+  "all_recallable_examples": {
+    "test": 22080,
+    "train": 221069,
+    "val": 22066
+  },
+  "benchmark": "TinyRime-Context-v1",
+  "candidate_pool_k": 8,
+  "display_pool_k": 8,
+  "splits": {
+    "test": {
+      "bytes": 3035672,
+      "compressed_sha256": "d0450055f6fcbea0ccb24b220b391134338223f7a63fa312b5adb8c15fa79ff1",
+      "content_sha256": "0a4d72459eeea20ce1e07ff6a763a9c636b0d42c60abce32967196e871694e58",
+      "contested_examples": 11106,
+      "examples": 22080,
+      "ordered_example_ids_sha256": "10b34cffffa59a5878d4299189ee538ed81f95db0a0285f41fe60e4501f0892e",
+      "source_document_ids_sha256": "71eb4eb98f6230e0572d0f5711fdbeab7f9bd6145f639a2ba44ee7ae8671d89f",
+      "source_documents": 1597
+    },
+    "train": {
+      "bytes": 15837034,
+      "compressed_sha256": "a6fd15a6a8695786f71393fc15bc56640e1f428dc02d0eddad5e082cfd25d3c6",
+      "content_sha256": "f125fcf29ffbd51dc8b39a89070cf7f85220924c2c0da8b14c200aa5bbc67090",
+      "contested_examples": 49529,
+      "examples": 100000,
+      "ordered_example_ids_sha256": "ffdd8d744e167c077dba4ed42317978d3f05929d04f36f44cc57ab7fde584454",
+      "source_document_ids_sha256": "c67994ac0abb7b4164b99523a5a1050d178fa7ced76fbdf5738b9a9e0d4a7b77",
+      "source_documents": 15843
+    },
+    "val": {
+      "bytes": 3038036,
+      "compressed_sha256": "cdd5191b2a356733d9a4a2562fb513378466aa5c84f0770cd1f29c2908078199",
+      "content_sha256": "3a1e896064edb177f663350269801a6f5cbf81e846b4b564f4b589622c5277d3",
+      "contested_examples": 11100,
+      "examples": 22066,
+      "ordered_example_ids_sha256": "18a253eb274817da1577c3687cf7f23d903fbe69de79e0419945225c507dd570",
+      "source_document_ids_sha256": "95d5c0e9ea19b440fbcf6929cfec62bd3b8b3d5b8af803470ea46fda189b71af",
+      "source_documents": 1586
+    }
+  },
+  "train_sampling": {
+    "method": "lowest stable SHA-256 priority over all recallable train examples",
+    "requested": 100000,
+    "seed": 20260827
+  }
+}

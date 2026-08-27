@@ -1,0 +1,74 @@
+{
+  "files": [
+    {
+      "bytes": 5863,
+      "path": "reports/TinyRime-Context-v1/benchmark_manifest.json",
+      "sha256": "f2456aee0f09f4b581b74eae21515d9cd63e8d72dc2963cb6c74d6e65ee0faba"
+    },
+    {
+      "bytes": 687,
+      "path": "reports/TinyRime-Context-v1/candidate-union.json",
+      "sha256": "fa598f2d3114a575fa3e9605a70becf1a8450be7c1785a9b910111f6e99e970f"
+    },
+    {
+      "bytes": 36319,
+      "path": "reports/TinyRime-Context-v1/error-overlap/summary.json",
+      "sha256": "84283d001bc37b5830f1c953286e8ac0bf73bec358bc894234072b320a87aa01"
+    },
+    {
+      "bytes": 941,
+      "path": "reports/TinyRime-Context-v1/error-overlap/summary.md",
+      "sha256": "c857e6e2af2416065a4aa169f279aba8b73f0ecd07d7aa8decdc22142b365fb1"
+    },
+    {
+      "bytes": 914023,
+      "path": "reports/TinyRime-Context-v1/error-overlap/wanxiang-right-tiny-wrong.jsonl",
+      "sha256": "919a2c7644590f9ae9bbf38f8cfafdfa391aa3c8c8b717aac8fceda32cdaaf0c"
+    },
+    {
+      "bytes": 913338,
+      "path": "reports/TinyRime-Context-v1/error-overlap/wanxiang-wrong-tiny-right.jsonl",
+      "sha256": "72816ec2a60a04d7eab12d5310064af894f00980b2bb470ff74050d434a6e138"
+    },
+    {
+      "bytes": 612,
+      "path": "reports/TinyRime-Context-v1/query-statistics.json",
+      "sha256": "e7587230e107ad112eb1d834f88566162a1480c52b5bcb3ab9c44ededef3684f"
+    },
+    {
+      "bytes": 1952,
+      "path": "reports/TinyRime-Context-v1/ranking-k8-statistics.json",
+      "sha256": "e7d25d7d7939085076c5b276a8fb46d9a010f334f75a04f91d38d8d0de33d8b4"
+    },
+    {
+      "bytes": 359,
+      "path": "reports/TinyRime-Context-v1/ranking-k8-validation.json",
+      "sha256": "50a332bed0a33643f4e8cbfa507dfb54fff562247ead220a6ec3cee70e486bd5"
+    },
+    {
+      "bytes": 982,
+      "path": "reports/TinyRime-Context-v1/reservoir-statistics.json",
+      "sha256": "d624e4f22fa809e828ef3e7ced386358c7ebda9edbdca0da4cb5b8e3a2ea6155"
+    },
+    {
+      "bytes": 4464,
+      "path": "reports/TinyRime-Context-v1/rime-top32-profile.json",
+      "sha256": "ca46082d43d23ef21e764f9f138b5f03abc03013acdfcb831c22fcb58be8fa20"
+    },
+    {
+      "bytes": 92800,
+      "path": "reports/TinyRime-Context-v1/vocabulary-audit.json",
+      "sha256": "8fc3a130625ff952d9826be9b684f0df2427349f4b52c052ff7d837518ed2812"
+    },
+    {
+      "bytes": 4419,
+      "path": "reports/TinyRime-Context-v1/wanxiang-top32-profile.json",
+      "sha256": "b58b976574d8b770cce5086e68cebe9546cc7a8ed2e7cb5423625aa4a202d61c"
+    }
+  ],
+  "over_500mb_review_required": false,
+  "prohibited_matches": [],
+  "reason_if_over_500mb": "",
+  "root": "/root/autodl-tmp/tiny-rime-reranker",
+  "total_bytes": 1976759
+}

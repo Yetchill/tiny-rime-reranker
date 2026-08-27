@@ -10,3 +10,9 @@
 | User typing history or personal dictionary | Private user data | Prohibited from collection, fixtures, training, logs, and transfer. |
 
 Until training-input provenance and downstream weight obligations have been reviewed, experimental weights must not be described as publicly redistributable.
+
+## v0.1 release boundary
+
+The public research release contains source code, immutable manifests, aggregate statistics, and aggregate error analysis. It does not contain the Wikipedia JSONL, full or derived query/ranking datasets, candidate caches, full sample-level prediction artifact, external Rime/Wanxiang data, or neural checkpoint weights.
+
+Two deterministic 200-row qualitative error samples may be retained locally under the Mac fixture allowance, but v0.1 excludes them from Git because their rows do not preserve sufficient per-article attribution metadata. The complete prediction artifact remains on the AutoDL data disk. Its release-run identity is 44,908,320 bytes with SHA-256 `2f09edd79370aec5653b557928b92a834845b8a2cb2c35ee1d6103d2a230e1f6`.

@@ -1,0 +1,29 @@
+{
+  "discarded_short": 774279,
+  "elapsed_seconds": 153.3838350698352,
+  "eligible_documents": 715511,
+  "input_documents": 1489790,
+  "max_characters_per_document": 12000,
+  "output": "/root/autodl-tmp/tiny-rime-reranker/datasets/TinyRime-Context-v1/documents.jsonl.zst",
+  "output_bytes": 34143466,
+  "sampled_documents": 30000,
+  "sampled_source_document_ids_sha256": "a2a1609f320088940c900fe3b16ee58168de8800311bd90a1d6411338e754d6d",
+  "sampled_split_documents": {
+    "test": 2547,
+    "train": 24972,
+    "val": 2481
+  },
+  "sampled_text_length": {
+    "max": 12000,
+    "p50": 465,
+    "p95": 3491,
+    "total": 29230223
+  },
+  "sampling": "Algorithm R, one pass over every eligible document",
+  "seed": 20260827,
+  "snapshot": "20260501",
+  "source": "/root/autodl-tmp/tiny-rime-reranker/corpus/wikipedia-zh-cn-20260501.json",
+  "source_bytes": 2393692848,
+  "source_format": "jsonl",
+  "source_sha256": "c8c719a84d402371ffa6b99b57bc9bc524bf66e07d72dfc724e51d0224eaee62"
+}

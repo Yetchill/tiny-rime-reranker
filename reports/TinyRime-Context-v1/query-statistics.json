@@ -1,0 +1,19 @@
+{
+  "contested_definition": "global fixed query pool: normalized pinyin has at least two distinct gold targets",
+  "contested_examples": 147941,
+  "contested_pinyin_keys": 8946,
+  "duplicate_context_target_pairs_discarded": 4978,
+  "max_queries_per_document": 16,
+  "pinyin_normalization": "lowercase syllables joined by apostrophe; pypinyin Style.NORMAL",
+  "queries": {
+    "test": 25000,
+    "train": 250000,
+    "val": 25000
+  },
+  "selection": "jieba 2-4 Han-character tokens, fixed SHA-256 priority within each document",
+  "source_documents": {
+    "test": 1597,
+    "train": 15879,
+    "val": 1586
+  }
+}

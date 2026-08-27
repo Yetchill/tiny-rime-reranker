@@ -21,6 +21,10 @@ training-tmp/
 remote-build-cache/
 pip-cache/
 raw-logs/
+reports/**/phase*-predictions.jsonl
+reports/**/phase*-predictions.jsonl.zst
+# Qualitative rows contain licensed source excerpts without per-page attribution.
+reports/**/error-overlap/*.jsonl
 *.pt
 *.pth
 *.ckpt

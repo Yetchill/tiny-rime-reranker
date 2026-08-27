@@ -6,6 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "tiny-rime-reranker"
 version = "0.1.0"
 description = "A conservative, local-only context reranker for Rime candidates"
+readme = "README.md"
+license = "BSD-3-Clause"
 requires-python = ">=3.10"
 
 [project.optional-dependencies]

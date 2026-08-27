@@ -1,0 +1,133 @@
+{
+  "benchmark": "TinyRime-Context-v1",
+  "candidate_generation": {
+    "internal_pool_k": 32,
+    "librime_commit": "13faefe2819d01fce208752c2539744094bb4787",
+    "librime_octagram_commit": "bfb168ca33d8b372596fdf2007933f3da1cf360e",
+    "measured_recall_k": [
+      1,
+      3,
+      5,
+      8,
+      12,
+      16,
+      24,
+      32
+    ],
+    "rime_ice_commit": "75e6572bebc05b49021e842949ce947882e3e4b2",
+    "scored_splits": {
+      "test": {
+        "compressed_sha256": "a259d973003b68be0257e2c1ee278cbf8292e75e799118e49e922fea84326169",
+        "content_sha256": "d35168b2930faf9ff0d0421b60529c103314496c6636cd36eccdb9193eb48a71",
+        "examples": 25000,
+        "source_document_ids_sha256": "71eb4eb98f6230e0572d0f5711fdbeab7f9bd6145f639a2ba44ee7ae8671d89f"
+      },
+      "train": {
+        "compressed_sha256": "17c7b2565ac6874de6ea5a68e2be668653e5df8c50b9c0ee0816453c5c8d591a",
+        "content_sha256": "e97bca6a04e845411b08376d5530f3e4899398b1d5e2d05dce6b36be8beccd83",
+        "examples": 250000,
+        "source_document_ids_sha256": "d0c829f1736bc6280e4f9bd293ae9632254a093a7f9d34d4a0793072f76c9446"
+      },
+      "val": {
+        "compressed_sha256": "96577b75268cbd132d7372edcf32d0dee984fb2d061d82317b8a3b5884df3a18",
+        "content_sha256": "a7a0a91ae510c6afa714c3a7c8c2050033b56e706c1705cebb0b4a6def22ab2d",
+        "examples": 25000,
+        "source_document_ids_sha256": "95d5c0e9ea19b440fbcf6929cfec62bd3b8b3d5b8af803470ea46fda189b71af"
+      }
+    },
+    "wanxiang_model_sha256": "01ffe37f22607bf8a5cd5d82a3349f6df97744369464aee4577585112d85469d"
+  },
+  "immutability": "This file must never be overwritten; protocol changes require a new benchmark name.",
+  "query_generation": {
+    "code_commit": "ddba2f778f008813514368226f55a0e7a695c48d",
+    "contested": "global fixed query pool normalized pinyin has >=2 distinct gold targets",
+    "normalization": [
+      "target is a Jieba token containing 2-4 characters in U+3400..U+9FFF",
+      "left context is stripped and capped at 32 Python Unicode code points",
+      "duplicate context-target pairs are removed globally",
+      "maximum 16 queries per document selected by stable SHA-256 priority"
+    ],
+    "pinyin": "pypinyin Style.NORMAL; lowercase syllables joined by apostrophe for contested keys",
+    "splits": {
+      "test": {
+        "compressed_sha256": "37c343ac2ae400e16bab0db82f7f26d956dc4b5957fd1555cc886d7598fdf42e",
+        "content_sha256": "a3a12fc53fd580019acbaa7e00f51ea7103786163ecb1a4a35898de1f8cf696c",
+        "examples": 25000,
+        "source_document_ids_sha256": "71eb4eb98f6230e0572d0f5711fdbeab7f9bd6145f639a2ba44ee7ae8671d89f"
+      },
+      "train": {
+        "compressed_sha256": "6f50531256aab876d81246550be5c24e6d6d777ff6805697da8f92dd020b4a08",
+        "content_sha256": "65a802b13185d18307b636be551cf84bc9d83bfe09030f480c0a56e16c756491",
+        "examples": 250000,
+        "source_document_ids_sha256": "d0c829f1736bc6280e4f9bd293ae9632254a093a7f9d34d4a0793072f76c9446"
+      },
+      "val": {
+        "compressed_sha256": "208186e72aa6559816b35b155abbc4f6f86697c339b51bee0d388bbf7810f356",
+        "content_sha256": "992663b472151926d8163d090e3b7772982d1a0d557962c33b1842e04de4f56e",
+        "examples": 25000,
+        "source_document_ids_sha256": "95d5c0e9ea19b440fbcf6929cfec62bd3b8b3d5b8af803470ea46fda189b71af"
+      }
+    },
+    "stats": {
+      "contested_definition": "global fixed query pool: normalized pinyin has at least two distinct gold targets",
+      "contested_examples": 147941,
+      "contested_pinyin_keys": 8946,
+      "duplicate_context_target_pairs_discarded": 4978,
+      "max_queries_per_document": 16,
+      "pinyin_normalization": "lowercase syllables joined by apostrophe; pypinyin Style.NORMAL",
+      "queries": {
+        "test": 25000,
+        "train": 250000,
+        "val": 25000
+      },
+      "selection": "jieba 2-4 Han-character tokens, fixed SHA-256 priority within each document",
+      "source_documents": {
+        "test": 1597,
+        "train": 15879,
+        "val": 1586
+      }
+    }
+  },
+  "ranking_dataset": {
+    "candidate_pool_k": 8,
+    "display_pool_k": 8,
+    "splits": {
+      "test": {
+        "compressed_sha256": "d0450055f6fcbea0ccb24b220b391134338223f7a63fa312b5adb8c15fa79ff1",
+        "content_sha256": "0a4d72459eeea20ce1e07ff6a763a9c636b0d42c60abce32967196e871694e58",
+        "examples": 22080,
+        "source_document_ids_sha256": "71eb4eb98f6230e0572d0f5711fdbeab7f9bd6145f639a2ba44ee7ae8671d89f"
+      },
+      "train": {
+        "compressed_sha256": "a6fd15a6a8695786f71393fc15bc56640e1f428dc02d0eddad5e082cfd25d3c6",
+        "content_sha256": "f125fcf29ffbd51dc8b39a89070cf7f85220924c2c0da8b14c200aa5bbc67090",
+        "examples": 100000,
+        "source_document_ids_sha256": "c67994ac0abb7b4164b99523a5a1050d178fa7ced76fbdf5738b9a9e0d4a7b77"
+      },
+      "val": {
+        "compressed_sha256": "cdd5191b2a356733d9a4a2562fb513378466aa5c84f0770cd1f29c2908078199",
+        "content_sha256": "3a1e896064edb177f663350269801a6f5cbf81e846b4b564f4b589622c5277d3",
+        "examples": 22066,
+        "source_document_ids_sha256": "95d5c0e9ea19b440fbcf6929cfec62bd3b8b3d5b8af803470ea46fda189b71af"
+      }
+    },
+    "train_sampling": {
+      "method": "lowest stable SHA-256 priority over all recallable train examples",
+      "requested": 100000,
+      "seed": 20260827
+    }
+  },
+  "reservoir": {
+    "sampled_documents": 30000,
+    "seed": 20260827,
+    "source_document_ids_sha256": "a2a1609f320088940c900fe3b16ee58168de8800311bd90a1d6411338e754d6d"
+  },
+  "schema_version": 1,
+  "source": {
+    "dataset_repo": "fjcanyue/wikipedia-zh-cn",
+    "file": "wikipedia-zh-cn-20260501.json",
+    "revision": "38a697eb24e84c569ce05cb5f23336bdeb6a94c3",
+    "sha256": "c8c719a84d402371ffa6b99b57bc9bc524bf66e07d72dfc724e51d0224eaee62",
+    "snapshot_date": "2026-05-01"
+  }
+}
