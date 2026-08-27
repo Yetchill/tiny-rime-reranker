@@ -82,3 +82,11 @@ Generate a Wanxiang-ranked 100k candidate dataset from the existing fixed querie
 ## Remote shutdown
 
 Continuation remote shutdown requested at: **2026-08-27 23:25:18 CST**. SSH closed immediately as expected. The instance was powered off, not destroyed, and was not contacted again; the verified corpus, query pool, candidate dataset, checkpoints, Wanxiang model, and source mirror remain on its data disk.
+
+## v0.1 closure (supersedes the pilot next-step note)
+
+The instance was restarted once to build and evaluate the corrected `TinyRime-Context-v1` protocol. The full recallable test set has 22,080 examples. Tiny-8M scores 86.621% conditional Top-1, Wanxiang scores 87.944%, their oracle scores 90.811%, and the validation-selected simple hybrid scores 90.349%. The complete prediction artifact remains on the data disk; only the reviewed 1,976,759-byte report set was synchronized and SHA-256 verified.
+
+The release closes without a residual training run. The next single question is whether a validation-calibrated router can preserve at least 95% promotion precision when selecting Tiny-8M corrections over Wanxiang. Full numbers and claim boundaries are in `reports/v0.1-release-report.md`.
+
+Remote shutdown requested at: **2026-08-28T01:25:06+08:00**. `sync` completed, no TinyRime evaluation process remained, the data disk had 47GB free, and SSH closed immediately after `/usr/bin/shutdown -h now`. The instance was stopped, not destroyed.
