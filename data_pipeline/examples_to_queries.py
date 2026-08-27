@@ -7,6 +7,7 @@ from pathlib import Path
 
 import zstandard
 
+from data_pipeline.identity import stable_example_id
 from data_pipeline.validate_dataset import iter_examples
 
 
@@ -25,12 +26,21 @@ def main() -> None:
                     for example in iter_examples(args.dataset_dir / f"{split}.jsonl.zst"):
                         target = example["candidates"][example["target_index"]]["text"]
                         query = {
+                            "example_id": example.get("example_id")
+                            or stable_example_id(
+                                split,
+                                example["source_document_id"],
+                                example["context"],
+                                example["pinyin"],
+                                target,
+                            ),
                             "context": example["context"],
                             "pinyin": example["pinyin"],
                             "target": target,
                             "source_document_id": example["source_document_id"],
                             "baseline_target_index": example["target_index"],
                             "baseline_top1": example["candidates"][0]["text"],
+                            "contested": bool(example.get("contested", False)),
                         }
                         sink.write(json.dumps(query, ensure_ascii=False) + "\n")
                         count += 1

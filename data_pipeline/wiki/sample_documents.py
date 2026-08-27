@@ -154,6 +154,7 @@ def main() -> None:
         "eligible_documents": eligible_documents,
         "discarded_short": discarded_short,
         "sampled_documents": len(reservoir),
+        "sampled_source_document_ids_sha256": hashlib.sha256("\n".join(sorted(ids)).encode()).hexdigest(),
         "sampled_split_documents": split_counts,
         "max_characters_per_document": args.max_characters_per_document,
         "sampled_text_length": {

@@ -37,6 +37,7 @@ class RankingExample:
     candidates: tuple[Candidate, ...]
     target_index: int
     source_document_id: str
+    contested: bool
 
     @classmethod
     def from_dict(cls, value: dict[str, Any], top_k: int = 8) -> "RankingExample":
@@ -47,6 +48,7 @@ class RankingExample:
             candidates=candidates,
             target_index=int(value["target_index"]),
             source_document_id=str(value["source_document_id"]),
+            contested=bool(value.get("contested", False)),
         )
         example.validate(top_k=top_k)
         return example

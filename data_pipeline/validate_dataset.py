@@ -31,7 +31,7 @@ def iter_examples(path: Path) -> Iterator[dict]:
                     raise ValueError(f"{path}:{line_number}: invalid JSON") from error
 
 
-def validate(paths: list[Path]) -> dict:
+def validate(paths: list[Path], require_canonical_contested: bool = False) -> dict:
     documents_by_split: dict[str, set[str]] = {}
     exact_seen: set[str] = set()
     pair_seen: set[tuple[str, str]] = set()
@@ -43,6 +43,8 @@ def validate(paths: list[Path]) -> dict:
         split = path.name.split(".", 1)[0]
         documents = documents_by_split.setdefault(split, set())
         for raw in iter_examples(path):
+            if require_canonical_contested and "contested" not in raw:
+                raise ValueError(f"canonical contested flag missing in {path}")
             example = RankingExample.from_dict(raw)
             documents.add(example.source_document_id)
             canonical = json.dumps(raw, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
@@ -60,6 +62,8 @@ def validate(paths: list[Path]) -> dict:
                 if example.target_index < min(k, len(example.candidates)):
                     recall[f"recall@{k}"] += 1
             contested_targets["/".join(example.pinyin)].add(target)
+            if require_canonical_contested and not isinstance(raw["contested"], bool):
+                raise ValueError(f"canonical contested flag must be boolean in {path}")
 
     splits = sorted(documents_by_split)
     for left_index, left in enumerate(splits):
@@ -82,8 +86,9 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("paths", nargs="+", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--require-canonical-contested", action="store_true")
     args = parser.parse_args()
-    report = validate(args.paths)
+    report = validate(args.paths, require_canonical_contested=args.require_canonical_contested)
     rendered = json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(rendered, encoding="utf-8")
