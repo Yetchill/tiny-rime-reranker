@@ -99,6 +99,16 @@ def validate_records(records: list[dict], methods: Iterable[str]) -> None:
                 raise PredictionArtifactError(f"{location}: missing prediction text for {method}")
             if prediction["text"] not in candidate_texts:
                 raise PredictionArtifactError(f"{location}: {method} predicts outside candidate list")
+            if "proposed_text" in prediction and prediction["proposed_text"] not in candidate_texts:
+                raise PredictionArtifactError(f"{location}: {method} proposes outside candidate list")
+            if "ranking" in prediction:
+                if (
+                    not isinstance(prediction["ranking"], list)
+                    or not prediction["ranking"]
+                    or len(prediction["ranking"]) != len(set(prediction["ranking"]))
+                    or any(text not in candidate_texts for text in prediction["ranking"])
+                ):
+                    raise PredictionArtifactError(f"{location}: invalid ranking for {method}")
             for numeric in ("confidence", "margin"):
                 if numeric in prediction and (
                     not isinstance(prediction[numeric], (int, float)) or not math.isfinite(prediction[numeric])
@@ -114,6 +124,31 @@ def correct(record: dict, method: str) -> bool:
 
 def accuracy(records: list[dict], method: str) -> float | None:
     return sum(correct(record, method) for record in records) / len(records) if records else None
+
+
+def method_ranking(record: dict, method: str) -> list[str]:
+    prediction = record["methods"][method]
+    return prediction.get("ranking", [prediction["text"]])
+
+
+def method_metrics(records: list[dict], method: str) -> dict:
+    if not records:
+        return {"samples": 0, "top1": None, "top3": None, "mrr": None}
+    top1 = top3 = 0
+    reciprocal_sum = 0.0
+    for record in records:
+        ranking = method_ranking(record, method)
+        gold = record["gold"]
+        top1 += ranking[0] == gold
+        top3 += gold in ranking[:3]
+        if gold in ranking:
+            reciprocal_sum += 1.0 / (ranking.index(gold) + 1)
+    return {
+        "samples": len(records),
+        "top1": top1 / len(records),
+        "top3": top3 / len(records),
+        "mrr": reciprocal_sum / len(records),
+    }
 
 
 def overlap_matrix(records: list[dict], left: str, right: str) -> dict:
@@ -234,14 +269,26 @@ def reliability_bins(records: list[dict], method: str, bins: int = 10) -> list[d
     ]
 
 
-def hybrid_metrics(records: list[dict], baseline: str, challenger: str, threshold: float) -> dict:
+def proposal_text(record: dict, method: str) -> str:
+    prediction = record["methods"][method]
+    return prediction.get("proposed_text", prediction["text"])
+
+
+def hybrid_metrics(
+    records: list[dict], baseline: str, challenger: str, threshold: float, margin_threshold: float = 0.15
+) -> dict:
     samples = len(records)
     correct_count = wins = losses = changed = correct_promotions = 0
     for record in records:
         base = record["methods"][baseline]["text"]
         candidate = record["methods"][challenger]
-        use_challenger = candidate["text"] != base and float(candidate["confidence"]) >= threshold
-        prediction = candidate["text"] if use_challenger else base
+        proposed = proposal_text(record, challenger)
+        use_challenger = (
+            proposed != base
+            and float(candidate["confidence"]) >= threshold
+            and float(candidate.get("margin", margin_threshold)) >= margin_threshold
+        )
+        prediction = proposed if use_challenger else base
         is_correct = prediction == record["gold"]
         baseline_correct = base == record["gold"]
         correct_count += is_correct
@@ -254,9 +301,12 @@ def hybrid_metrics(records: list[dict], baseline: str, challenger: str, threshol
     for record in contested:
         base = record["methods"][baseline]["text"]
         challenger_value = record["methods"][challenger]
+        proposed = proposal_text(record, challenger)
         prediction = (
-            challenger_value["text"]
-            if challenger_value["text"] != base and float(challenger_value["confidence"]) >= threshold
+            proposed
+            if proposed != base
+            and float(challenger_value["confidence"]) >= threshold
+            and float(challenger_value.get("margin", margin_threshold)) >= margin_threshold
             else base
         )
         contested_correct += prediction == record["gold"]
@@ -281,9 +331,26 @@ def tune_hybrid_threshold(records: list[dict], baseline: str, challenger: str) -
         return {"status": "NOT AVAILABLE", "reason": f"{challenger} confidence is missing"}
     if not records:
         return {"status": "NOT AVAILABLE", "reason": "validation subset is empty"}
+    candidates = threshold_curve(records, baseline, challenger)
+
+    def objective(item: dict) -> tuple:
+        precision = -1.0 if item["promotion_precision"] is None else item["promotion_precision"]
+        return item["top1"], precision, -item["coverage"], item["threshold"]
+
+    best = max(candidates, key=objective)
+    return {"status": "AVAILABLE", "selected_on": "val", **best}
+
+
+def threshold_curve(
+    records: list[dict], baseline: str, challenger: str, margin_threshold: float = 0.15
+) -> list[dict]:
     groups: dict[float, list[dict]] = defaultdict(list)
     for record in records:
-        if record["methods"][challenger]["text"] != record["methods"][baseline]["text"]:
+        prediction = record["methods"][challenger]
+        if (
+            proposal_text(record, challenger) != record["methods"][baseline]["text"]
+            and float(prediction.get("margin", margin_threshold)) >= margin_threshold
+        ):
             groups[float(record["methods"][challenger]["confidence"])].append(record)
     samples = len(records)
     contested_samples = sum(record["contested"] for record in records)
@@ -309,7 +376,7 @@ def tune_hybrid_threshold(records: list[dict], baseline: str, challenger: str) -
     for threshold in sorted(groups, reverse=True):
         for record in groups[threshold]:
             baseline_correct = correct(record, baseline)
-            challenger_correct = correct(record, challenger)
+            challenger_correct = proposal_text(record, challenger) == record["gold"]
             correct_count += challenger_correct - baseline_correct
             if record["contested"]:
                 contested_correct += challenger_correct - baseline_correct
@@ -319,12 +386,47 @@ def tune_hybrid_threshold(records: list[dict], baseline: str, challenger: str) -
             correct_promotions += challenger_correct
         candidates.append(current(threshold))
 
-    def objective(item: dict) -> tuple:
-        precision = -1.0 if item["promotion_precision"] is None else item["promotion_precision"]
-        return item["top1"], precision, -item["coverage"], item["threshold"]
+    return candidates
 
-    best = max(candidates, key=objective)
-    return {"status": "AVAILABLE", "selected_on": "val", **best}
+
+def safe_operating_points(
+    val_records: list[dict],
+    test_records: list[dict],
+    baseline: str,
+    challenger: str,
+    precision_targets: tuple[float, ...] = (0.90, 0.95, 0.97, 0.99),
+) -> dict:
+    if any(record["split"] != "val" for record in val_records):
+        raise PredictionArtifactError("safe operating points tune on val only")
+    if any(record["split"] != "test" for record in test_records):
+        raise PredictionArtifactError("safe operating points evaluate on test only")
+    if any("confidence" not in record["methods"][challenger] for record in val_records + test_records):
+        return {"status": "NOT AVAILABLE", "reason": f"{challenger} confidence is missing"}
+    if not val_records or not test_records:
+        return {"status": "NOT AVAILABLE", "reason": "both val and test subsets are required"}
+    curve = threshold_curve(val_records, baseline, challenger)
+    points = {}
+    for target in precision_targets:
+        eligible = [
+            item
+            for item in curve
+            if item["promotion_precision"] is not None and item["promotion_precision"] >= target
+        ]
+        label = f"{int(target * 100)}%"
+        if not eligible:
+            points[label] = {"status": "NOT AVAILABLE"}
+            continue
+        selected = max(
+            eligible,
+            key=lambda item: (item["net_wins"], item["top1"], item["coverage"], item["threshold"]),
+        )
+        points[label] = {
+            "status": "AVAILABLE",
+            "selected_on": "val",
+            "val": selected,
+            "test": hybrid_metrics(test_records, baseline, challenger, selected["threshold"]),
+        }
+    return {"status": "AVAILABLE", "baseline": baseline, "challenger": challenger, "points": points}
 
 
 def deterministic_sample(records: list[dict], maximum: int, seed: int) -> list[dict]:
@@ -378,6 +480,15 @@ def analyze(records: list[dict], methods: tuple[str, ...], seed: int) -> dict:
     )
     contested = [record for record in test if record["contested"]]
     reliability = {method: reliability_bins(test, method) for method in methods}
+    safe_gain = {}
+    if val and test:
+        for method in ("tiny_2m", "tiny_4m", "tiny_8m"):
+            if "rime" in methods and method in methods:
+                safe_gain[f"rime_to_{method}"] = safe_operating_points(val, test, "rime", method)
+        if "wanxiang" in methods and "tiny_8m" in methods:
+            safe_gain["wanxiang_to_tiny_8m"] = safe_operating_points(
+                val, test, "wanxiang", "tiny_8m"
+            )
     hybrid = {"status": "NOT AVAILABLE", "reason": "val and test records are both required"}
     if val and test and "wanxiang" in methods and "tiny_8m" in methods:
         tuned = tune_hybrid_threshold(val, "wanxiang", "tiny_8m")
@@ -417,7 +528,7 @@ def analyze(records: list[dict], methods: tuple[str, ...], seed: int) -> dict:
     return {
         "schema_version": 1,
         "samples": {"val": len(val), "test": len(test), "contested_test": len(contested)},
-        "methods": {method: {"test_top1": accuracy(test, method)} for method in methods},
+        "methods": {method: method_metrics(test, method) for method in methods},
         "comparisons": comparisons,
         "wanxiang_vs_tiny8_quadrants": primary_quadrants,
         "groups": {
@@ -443,6 +554,7 @@ def analyze(records: list[dict], methods: tuple[str, ...], seed: int) -> dict:
             ),
         },
         "reliability": reliability,
+        "safe_gain_operating_points": safe_gain,
         "simple_hybrid": hybrid,
         "error_groups": error_groups,
     }

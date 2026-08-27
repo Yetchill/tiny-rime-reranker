@@ -5,16 +5,18 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from benchmark.offline.export_prediction_artifact import stable_example_id
+from benchmark.offline.export_prediction_artifact import candidate_scores, score_margin, stable_example_id
 from benchmark.offline.error_overlap import (
     PredictionArtifactError,
     analyze,
     deterministic_sample,
     grouped_accuracy,
     hybrid_metrics,
+    method_metrics,
     oracle_metrics,
     overlap_matrix,
     render_markdown,
+    safe_operating_points,
     target_bucket,
     tune_hybrid_threshold,
     validate_records,
@@ -95,6 +97,12 @@ class ErrorOverlapTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertNotEqual(first, validation)
 
+    def test_candidate_quality_scores_and_margin_preserve_missing_values(self):
+        scores = candidate_scores([{"quality": 3.0}, {"quality": 1.25}, {"quality": None}])
+        self.assertEqual(scores, [3.0, 1.25, None])
+        self.assertEqual(score_margin(scores), 1.75)
+        self.assertIsNone(score_margin([None, 1.0]))
+
     def test_overlap_matrix_and_oracle_accuracy(self):
         records = quadrant_records()
         overlap = overlap_matrix(records, "wanxiang", "tiny_8m")
@@ -107,6 +115,12 @@ class ErrorOverlapTests(unittest.TestCase):
         self.assertEqual(oracle["right_accuracy"], 0.5)
         self.assertEqual(oracle["oracle_accuracy"], 0.75)
         self.assertEqual(oracle["oracle_gain_over_left"], 0.25)
+
+    def test_method_metrics_use_saved_final_ranking(self):
+        value = record("1", "test", "B", "A", "A")
+        value["methods"]["wanxiang"]["ranking"] = ["A", "B", "C"]
+        metrics = method_metrics([value], "wanxiang")
+        self.assertEqual(metrics, {"samples": 1, "top1": 0.0, "top3": 1.0, "mrr": 0.5})
 
     def test_win_loss_counts_directional_changes(self):
         self.assertEqual(
@@ -163,6 +177,23 @@ class ErrorOverlapTests(unittest.TestCase):
             tune_hybrid_threshold([value], "wanxiang", "tiny_8m")["status"],
             "NOT AVAILABLE",
         )
+
+    def test_safe_operating_points_select_precision_on_val_only(self):
+        val = [
+            record("v1", "val", "B", "A", "B", 0.9),
+            record("v2", "val", "A", "A", "B", 0.2),
+        ]
+        test = [
+            record("t1", "test", "B", "A", "B", 0.95),
+            record("t2", "test", "A", "A", "B", 0.1),
+        ]
+        points = safe_operating_points(val, test, "wanxiang", "tiny_8m", (0.95,))
+        selected = points["points"]["95%"]
+        self.assertEqual(selected["status"], "AVAILABLE")
+        self.assertEqual(selected["val"]["threshold"], 0.9)
+        self.assertEqual(selected["test"]["net_wins"], 1)
+        with self.assertRaisesRegex(PredictionArtifactError, "val only"):
+            safe_operating_points(test, test, "wanxiang", "tiny_8m", (0.95,))
 
     def test_missing_required_field_and_out_of_set_prediction_fail(self):
         value = record("1", "test", "A", "A", "A")

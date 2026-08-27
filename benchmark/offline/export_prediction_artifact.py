@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import io
 import json
 from pathlib import Path
+
+from data_pipeline.identity import stable_example_id
 
 
 MODEL_METHODS = ("linear", "mlp", "tiny_2m", "tiny_4m", "tiny_8m")
@@ -17,11 +18,6 @@ PRESET_FOR_METHOD = {
 }
 
 
-def stable_example_id(split: str, source_document_id: str, context: str, pinyin: list[str], gold: str) -> str:
-    value = "\0".join((split, source_document_id, context, "/".join(pinyin), gold))
-    return hashlib.sha256(value.encode()).hexdigest()[:24]
-
-
 def output_stream(path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.suffix == ".zst":
@@ -29,6 +25,14 @@ def output_stream(path: Path):
 
         return io.TextIOWrapper(zstandard.ZstdCompressor(level=6).stream_writer(path.open("wb")), encoding="utf-8")
     return path.open("w", encoding="utf-8")
+
+
+def candidate_scores(candidates: list[dict]) -> list[float | None]:
+    return [None if candidate.get("quality") is None else float(candidate["quality"]) for candidate in candidates]
+
+
+def score_margin(scores: list[float | None]) -> float | None:
+    return scores[0] - scores[1] if len(scores) >= 2 and scores[0] is not None and scores[1] is not None else None
 
 
 def model_predictions(dataset_dir: Path, split: str, method: str, checkpoint: Path, batch_size: int) -> list[dict]:
@@ -40,7 +44,12 @@ def model_predictions(dataset_dir: Path, split: str, method: str, checkpoint: Pa
     from training.models import PRESETS, TinyContextReranker
 
     config = PRESETS[PRESET_FOR_METHOD[method]]
-    dataset = RimeRankingDataset(dataset_dir / f"{split}.jsonl.zst", config.vocab_size)
+    dataset = RimeRankingDataset(
+        dataset_dir / f"{split}.jsonl.zst",
+        config.vocab_size,
+        top_k=config.top_k,
+        type_encoding=config.type_encoding,
+    )
     loader = DataLoader(dataset, batch_size=batch_size, num_workers=0)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = TinyContextReranker(config).to(device)
@@ -55,6 +64,7 @@ def model_predictions(dataset_dir: Path, split: str, method: str, checkpoint: Pa
                 tensors["pinyin_ids"],
                 tensors["candidate_ids"],
                 tensors["numeric_features"],
+                tensors["candidate_type_ids"],
             )
             mask = tensors["candidate_mask"]
             base = -torch.arange(mask.shape[1], device=device).float().unsqueeze(0).expand_as(residuals)
@@ -66,6 +76,11 @@ def model_predictions(dataset_dir: Path, split: str, method: str, checkpoint: Pa
             prediction = torch.where(changed, proposed, torch.zeros_like(proposed))
             for index in range(prediction.shape[0]):
                 valid = int(mask[index].sum())
+                ranking = (
+                    torch.argsort(final[index, :valid], descending=True).tolist()
+                    if bool(changed[index])
+                    else list(range(valid))
+                )
                 results.append(
                     {
                         "prediction_index": int(prediction[index]),
@@ -75,6 +90,7 @@ def model_predictions(dataset_dir: Path, split: str, method: str, checkpoint: Pa
                         "margin": float(margin[index]),
                         "residual_scores": [float(value) for value in residuals[index, :valid]],
                         "final_scores": [float(value) for value in final[index, :valid]],
+                        "ranking_indices": ranking,
                     }
                 )
     return results
@@ -114,12 +130,9 @@ def main() -> None:
                 }
                 if any(len(values) != len(raw) for values in learned.values()):
                     raise RuntimeError("model prediction count mismatch")
-                targets_by_pinyin: dict[str, set[str]] = {}
-                for example in raw:
-                    target = example["candidates"][example["target_index"]]["text"]
-                    targets_by_pinyin.setdefault("/".join(example["pinyin"]), set()).add(target)
-                contested_keys = {key for key, targets in targets_by_pinyin.items() if len(targets) >= 2}
                 for index, example in enumerate(raw):
+                    if "contested" not in example or not isinstance(example["contested"], bool):
+                        raise ValueError("prediction export requires canonical contested flag")
                     gold = example["candidates"][example["target_index"]]["text"]
                     wanxiang = runner.candidates("".join(example["pinyin"]), example["context"])[:8]
                     union = []
@@ -144,9 +157,26 @@ def main() -> None:
                             union.append(value)
                             by_text[value["text"]] = value
                     methods = {
-                        "rime": {"text": example["candidates"][0]["text"]},
-                        "wanxiang": {"text": wanxiang[0]["text"] if wanxiang else example["candidates"][0]["text"]},
+                        "rime": {
+                            "text": example["candidates"][0]["text"],
+                            "ranking": [candidate["text"] for candidate in example["candidates"]],
+                            "scores": candidate_scores(example["candidates"]),
+                            "margin": score_margin(candidate_scores(example["candidates"])),
+                        },
+                        "wanxiang": {
+                            "text": wanxiang[0]["text"] if wanxiang else example["candidates"][0]["text"],
+                            "ranking": (
+                                [candidate["text"] for candidate in wanxiang]
+                                if wanxiang
+                                else [candidate["text"] for candidate in example["candidates"]]
+                            ),
+                            "scores": candidate_scores(wanxiang),
+                            "margin": score_margin(candidate_scores(wanxiang)),
+                        },
                     }
+                    for baseline_method in ("rime", "wanxiang"):
+                        if methods[baseline_method]["margin"] is None:
+                            del methods[baseline_method]["margin"]
                     for method in MODEL_METHODS:
                         value = learned[method][index]
                         candidates = example["candidates"]
@@ -158,10 +188,12 @@ def main() -> None:
                             "margin": value["margin"],
                             "residual_scores": value["residual_scores"],
                             "final_scores": value["final_scores"],
+                            "ranking": [candidates[position]["text"] for position in value["ranking_indices"]],
                         }
                     record = {
                         "schema_version": 1,
-                        "example_id": stable_example_id(
+                        "example_id": example.get("example_id")
+                        or stable_example_id(
                             split,
                             example["source_document_id"],
                             example["context"],
@@ -175,7 +207,7 @@ def main() -> None:
                         "gold": gold,
                         "candidates": union,
                         "ambiguity_count": len(union),
-                        "contested": "/".join(example["pinyin"]) in contested_keys,
+                        "contested": example["contested"],
                         "methods": methods,
                     }
                     output.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")

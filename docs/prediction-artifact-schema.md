@@ -1,6 +1,6 @@
 # Phase 2A prediction artifact schema
 
-The overlap analyzer consumes one JSON object per retained validation/test example. A `.jsonl.zst` file is supported when `zstandard` is available; plain `.jsonl` is also valid. The artifact contains predictions and small candidate metadata, never corpus text beyond the already bounded 32-character context.
+The overlap analyzer consumes one JSON object per full recallable v1 validation/test example. A `.jsonl.zst` file is supported when `zstandard` is available; plain `.jsonl` is also valid. The artifact contains predictions and small candidate metadata, never corpus text beyond the already bounded 32-character context.
 
 Required top-level fields:
 
@@ -38,7 +38,7 @@ Required top-level fields:
 
 The required methods are `rime`, `wanxiang`, `linear`, `mlp`, `tiny_2m`, `tiny_4m`, and `tiny_8m`. `candidates` is the union of original Rime Top-8 and Wanxiang Top-8; `rime_rank: null` identifies a Wanxiang-only candidate. Every final prediction must be a member of this union. `ambiguity_count` is the union size, and ambiguity bands are its empirical test-set terciles. Wanxiang margin/confidence is `NOT AVAILABLE` because the current public runner exposes neither.
 
-`contested` is computed independently within val or test: one pinyin key must map to at least two distinct gold targets in that retained split. Validation records tune any simple-hybrid threshold; test records are never passed to the tuning function.
+`contested` is copied from the canonical fixed-query-pool label: normalized pinyin maps to at least two distinct gold targets anywhere in that frozen query pool. Validation records tune any simple-hybrid threshold; test records are never passed to the tuning function.
 
 ## Remote export command for a future session
 
@@ -47,8 +47,8 @@ This command performs inference/export only. It does not train, download data, o
 ```bash
 cd /root/autodl-tmp/tiny-rime-reranker
 PYTHONPATH=source python -m benchmark.offline.export_prediction_artifact \
-  --dataset-dir datasets/pilot-rime-ice \
-  --output reports/phase2a-predictions.jsonl.zst \
+  --dataset-dir datasets/TinyRime-Context-v1/ranking-k8 \
+  --output reports/TinyRime-Context-v1/phase2b-predictions.jsonl.zst \
   --checkpoint linear=experiments/real-first-sweep/linear/best.safetensors \
   --checkpoint mlp=experiments/real-first-sweep/mlp/best.safetensors \
   --checkpoint tiny_2m=experiments/real-first-sweep/tiny-2m/best.safetensors \
@@ -66,8 +66,8 @@ Run the analyzer on AutoDL while the full 20k artifact is present:
 
 ```bash
 PYTHONPATH=source python -m benchmark.offline.error_overlap \
-  --predictions reports/phase2a-predictions.jsonl.zst \
-  --output reports/error-overlap
+  --predictions reports/TinyRime-Context-v1/phase2b-predictions.jsonl.zst \
+  --output reports/TinyRime-Context-v1/error-overlap
 ```
 
 Before AutoDL-to-Mac synchronization:
@@ -75,8 +75,8 @@ Before AutoDL-to-Mac synchronization:
 ```bash
 python source/scripts/remote/create_sync_manifest.py \
   /root/autodl-tmp/tiny-rime-reranker \
-  reports/error-overlap \
+  reports/TinyRime-Context-v1/error-overlap \
   --output work/sync-manifest-phase2a.json
 ```
 
-Expected size for 20,000 val+test records is roughly 40–80MB raw or 10–35MB compressed, but that full artifact stays on AutoDL. Synchronize only `summary.json`, `summary.md`, the two deterministic error samples (at most 200 records each), and the manifest/checksums. This keeps full-text local fixtures below the existing 1,000-record Mac limit. No corpus, query pool, candidate dataset, model checkpoint, cache, or complete prediction artifact is required on the Mac.
+The exact v1 row count is determined by full recallable val+test rather than a 10k cap. Expect roughly 80–180MB raw or 20–60MB compressed, but the full artifact stays on AutoDL. Synchronize only `summary.json`, `summary.md`, the two deterministic error samples (at most 200 records each), and the manifest/checksums. This keeps full-text local fixtures below the existing 1,000-record Mac limit. No corpus, query pool, candidate dataset, model checkpoint, cache, or complete prediction artifact is required on the Mac.
