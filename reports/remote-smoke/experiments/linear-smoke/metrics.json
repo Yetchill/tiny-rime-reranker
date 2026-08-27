@@ -1,0 +1,57 @@
+{
+  "best_net_wins": 0,
+  "epochs": [
+    {
+      "baseline_top1": 1.0,
+      "calibration_ece": 0.5440435215830803,
+      "contested_mrr": 0.0,
+      "contested_samples": 0,
+      "contested_top1": 0.0,
+      "epoch": 1,
+      "losses": 0,
+      "mrr": 1.0,
+      "net_wins": 0,
+      "promotion_precision": 0.0,
+      "recall@8_ceiling": 1.0,
+      "reorder_coverage": 0.0,
+      "samples": 20,
+      "top1": 1.0,
+      "top3": 1.0,
+      "train_loss_sum": 1.8700724244117737,
+      "wins": 0
+    },
+    {
+      "baseline_top1": 1.0,
+      "calibration_ece": 0.5496546968817712,
+      "contested_mrr": 0.0,
+      "contested_samples": 0,
+      "contested_top1": 0.0,
+      "epoch": 2,
+      "losses": 0,
+      "mrr": 1.0,
+      "net_wins": 0,
+      "promotion_precision": 0.0,
+      "recall@8_ceiling": 1.0,
+      "reorder_coverage": 0.0,
+      "samples": 20,
+      "top1": 1.0,
+      "top3": 1.0,
+      "train_loss_sum": 1.9166536331176758,
+      "wins": 0
+    }
+  ],
+  "model": {
+    "alpha": 0.25,
+    "embedding_dim": 16,
+    "encoder_heads": 1,
+    "encoder_layers": 0,
+    "hidden_dim": 0,
+    "name": "linear",
+    "top_k": 8,
+    "vocab_size": 4096
+  },
+  "parameter_count": 65622,
+  "peak_vram_bytes": 18938368,
+  "wall_time_seconds": 1.5307039730250835,
+  "weight_bytes": 262880
+}

@@ -1,0 +1,3 @@
+{"observed_at":"2026-08-27T21:09:04+08:00","stage":"preflight","project_bytes":0,"data_disk_size":"50G","data_disk_available":"50G"}
+{"observed_at":"2026-08-27T21:53:57+08:00","stage":"post-gate1-and-smoke","project_human":"420M","data_disk_size":"50G","data_disk_available":"50G","children":{"bin":"4.8M","datasets":"12K","experiments":"99M","source":"824K","upstream":"200M","work":"116M"}}
+{"observed_at":"2026-08-27T22:05:17+08:00","stage":"post-smoke-weight-cleanup","project_human":"321M","data_disk_size":"50G","data_disk_available":"50G","children":{"bin":"4.8M","datasets":"12K","experiments":"40K","source":"844K","upstream":"200M","work":"117M"}}

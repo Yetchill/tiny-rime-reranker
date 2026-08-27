@@ -1,0 +1,32 @@
+{
+  "captured_at": "2026-08-27T21:09:04+08:00",
+  "cpu": {
+    "allocated_vcpus": 12,
+    "model": "Intel Xeon Platinum 8255C @ 2.50GHz"
+  },
+  "cuda": "12.8",
+  "data_disk": {
+    "available_at_preflight": "50G",
+    "mount": "/root/autodl-tmp",
+    "size": "50G"
+  },
+  "driver": "580.76.05",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "gpu_available_to_torch": true,
+  "memory": {
+    "allocated_banner": "43GB",
+    "host_visible_via_free": "375GiB",
+    "note": "Use the AutoDL allocation as the workload limit; free(1) exposes host-level memory."
+  },
+  "os": "Ubuntu 22.04.5 LTS",
+  "python": {
+    "executable": "/root/miniconda3/bin/python",
+    "version": "3.12.3"
+  },
+  "pytorch": "2.8.0+cu128",
+  "system_disk": {
+    "available_at_preflight": "30G",
+    "size": "30G"
+  },
+  "vram_gib": 23.56
+}

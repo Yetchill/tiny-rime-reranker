@@ -1,0 +1,69 @@
+{
+  "files": [
+    {
+      "bytes": 353,
+      "path": "experiments/linear-smoke/config.json",
+      "sha256": "0a221b4c3f4acd39f1f5c541c0614a04f511fdba314e3f72836ea697e2394713"
+    },
+    {
+      "bytes": 1292,
+      "path": "experiments/linear-smoke/metrics.json",
+      "sha256": "a6abd4d1a7b2ad5e69225ff5290a7324577d9cce67f598f747a76f68f5832786"
+    },
+    {
+      "bytes": 311,
+      "path": "experiments/mlp-smoke/config.json",
+      "sha256": "651e9bbac9e64cdbf2c62e803a3fe83d55fc6bffb9cb761acdec4e1881351939"
+    },
+    {
+      "bytes": 1291,
+      "path": "experiments/mlp-smoke/metrics.json",
+      "sha256": "67ecacc628f53a98cfcc4c48d7cb15f5d9936a07113b66962202d1bf9f727307"
+    },
+    {
+      "bytes": 319,
+      "path": "experiments/tiny-2m-smoke/config.json",
+      "sha256": "0707cc96fc13dd833aa2998e62e12c69dbf158f1729d8229fceac5254da96d09"
+    },
+    {
+      "bytes": 1299,
+      "path": "experiments/tiny-2m-smoke/metrics.json",
+      "sha256": "0effb9e7b3bd5d89a2bedc05f2a59fc82adf13eb1dff30fbd95e643d42ffc3cc"
+    },
+    {
+      "bytes": 319,
+      "path": "experiments/tiny-4m-smoke/config.json",
+      "sha256": "150b86577737e9dfc06d60d1b7aa238b26d56030dde7048fee144d4ef7f94dc1"
+    },
+    {
+      "bytes": 1300,
+      "path": "experiments/tiny-4m-smoke/metrics.json",
+      "sha256": "be820474e941575ffc000dbf393b435fcd113aeba5e5510fa162b1ce7fdb014f"
+    },
+    {
+      "bytes": 319,
+      "path": "experiments/tiny-8m-smoke/config.json",
+      "sha256": "65f3472d628218431ebcc83f490009e26dfbb93b7f9e23335b0134aab1784151"
+    },
+    {
+      "bytes": 1300,
+      "path": "experiments/tiny-8m-smoke/metrics.json",
+      "sha256": "3a441d730793230d14faec2a6916adb252203fe4da01996e5d159e09bbdba55d"
+    },
+    {
+      "bytes": 249,
+      "path": "work/smoke-dataset-statistics.json",
+      "sha256": "81ab5c73987ccf7e854a83056b509b8b35ac85c7db077d6521c8723f1ca1b369"
+    },
+    {
+      "bytes": 307,
+      "path": "work/tiny-8m-smoke-export.json",
+      "sha256": "268ac2313b26693658779e16d5260b55b20ee98cb13c0472cb8ac1103ab90f2b"
+    }
+  ],
+  "over_500mb_review_required": false,
+  "prohibited_matches": [],
+  "reason_if_over_500mb": "",
+  "root": "/root/autodl-tmp/tiny-rime-reranker",
+  "total_bytes": 8659
+}

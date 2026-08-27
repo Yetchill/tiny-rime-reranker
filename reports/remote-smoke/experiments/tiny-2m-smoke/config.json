@@ -1,0 +1,10 @@
+{
+  "batch_size": 64,
+  "epochs": 2,
+  "learning_rate": 0.002,
+  "model": "tiny-2m",
+  "output_dir": "experiments/tiny-2m-smoke",
+  "seed": 20260827,
+  "train_data": "/root/autodl-tmp/tiny-rime-reranker/datasets/smoke/train.jsonl.zst",
+  "val_data": "/root/autodl-tmp/tiny-rime-reranker/datasets/smoke/val.jsonl.zst"
+}

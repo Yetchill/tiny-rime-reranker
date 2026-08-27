@@ -1,0 +1,57 @@
+{
+  "best_net_wins": 0,
+  "epochs": [
+    {
+      "baseline_top1": 1.0,
+      "calibration_ece": 0.7989814028143883,
+      "contested_mrr": 0.0,
+      "contested_samples": 0,
+      "contested_top1": 0.0,
+      "epoch": 1,
+      "losses": 0,
+      "mrr": 1.0,
+      "net_wins": 0,
+      "promotion_precision": 0.0,
+      "recall@8_ceiling": 1.0,
+      "reorder_coverage": 0.0,
+      "samples": 20,
+      "top1": 1.0,
+      "top3": 1.0,
+      "train_loss_sum": 1.590892255306244,
+      "wins": 0
+    },
+    {
+      "baseline_top1": 1.0,
+      "calibration_ece": 0.9999527408594758,
+      "contested_mrr": 0.0,
+      "contested_samples": 0,
+      "contested_top1": 0.0,
+      "epoch": 2,
+      "losses": 0,
+      "mrr": 1.0,
+      "net_wins": 0,
+      "promotion_precision": 0.0,
+      "recall@8_ceiling": 1.0,
+      "reorder_coverage": 0.0,
+      "samples": 20,
+      "top1": 1.0,
+      "top3": 1.0,
+      "train_loss_sum": 1.2954091429710388,
+      "wins": 0
+    }
+  ],
+  "model": {
+    "alpha": 0.25,
+    "embedding_dim": 192,
+    "encoder_heads": 6,
+    "encoder_layers": 3,
+    "hidden_dim": 256,
+    "name": "tiny-8m",
+    "top_k": 8,
+    "vocab_size": 32768
+  },
+  "parameter_count": 7430338,
+  "peak_vram_bytes": 203018752,
+  "wall_time_seconds": 2.006774924695492,
+  "weight_bytes": 29725976
+}

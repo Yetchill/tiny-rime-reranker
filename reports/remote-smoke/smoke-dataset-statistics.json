@@ -1,0 +1,17 @@
+{
+  "candidate_recall": {
+    "recall@1": 1.0,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "recall@8": 1.0
+  },
+  "contested_pinyin_keys": 0,
+  "documents": {
+    "train": 80,
+    "val": 20
+  },
+  "samples": {
+    "train": 80,
+    "val": 20
+  }
+}

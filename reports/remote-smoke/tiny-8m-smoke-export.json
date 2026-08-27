@@ -1,0 +1,9 @@
+{
+  "all_floating_tensors_fp16": true,
+  "output": "work/tiny-8m-smoke-fp16.safetensors",
+  "output_bytes": 14865276,
+  "sha256": "036f0ffa9f3c4739e8f7b0faa5e51dbd5fe2b6cdbd94b88fde91624024766eac",
+  "source": "experiments/tiny-8m-smoke/best.safetensors",
+  "source_bytes": 29725976,
+  "tensor_count": 45
+}
