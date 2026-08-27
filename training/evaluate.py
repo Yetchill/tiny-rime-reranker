@@ -14,8 +14,7 @@ def evaluate(model, loader, confidence_threshold: float = 0.80, margin_threshold
     model.eval()
     counts = Counter()
     confidence_bins = [Counter() for _ in range(10)]
-    contested_occurrences = Counter()
-    cached_batches = []
+    contested_results = []
     for batch in loader:
         device = next(model.parameters()).device
         tensors = {key: value.to(device) for key, value in batch.items()}
@@ -44,17 +43,15 @@ def evaluate(model, loader, confidence_threshold: float = 0.80, margin_threshold
             counts["losses"] += target == 0 and prediction != 0
             counts["reorders"] += bool(changed[index])
             counts["correct_promotions"] += bool(changed[index]) and prediction == target
-            key = int(tensors["contested_hash"][index])
-            contested_occurrences[key] += 1
-            cached_batches.append((key, target, prediction, reciprocal_rank(order, target)))
+            if bool(tensors["contested"][index]):
+                contested_results.append((target, prediction, reciprocal_rank(order, target)))
             probability = float(confidence[index])
             bin_index = min(9, int(probability * 10))
             confidence_bins[bin_index]["count"] += 1
             confidence_bins[bin_index]["probability_sum"] += probability
             confidence_bins[bin_index]["correct"] += prediction == target
     n = counts["samples"] or 1
-    contested = [item for item in cached_batches if contested_occurrences[item[0]] >= 2]
-    contested_n = len(contested) or 1
+    contested_n = len(contested_results) or 1
     ece = 0.0
     for values in confidence_bins:
         if values["count"]:
@@ -68,9 +65,9 @@ def evaluate(model, loader, confidence_threshold: float = 0.80, margin_threshold
         "top1": counts["model_top1"] / n,
         "top3": counts["model_top3"] / n,
         "mrr": counts["mrr_sum"] / n,
-        "contested_samples": len(contested),
-        "contested_top1": sum(prediction == target for _, target, prediction, _ in contested) / contested_n,
-        "contested_mrr": sum(mrr for *_, mrr in contested) / contested_n,
+        "contested_samples": len(contested_results),
+        "contested_top1": sum(prediction == target for target, prediction, _ in contested_results) / contested_n,
+        "contested_mrr": sum(mrr for _, _, mrr in contested_results) / contested_n,
         "wins": counts["wins"],
         "losses": counts["losses"],
         "net_wins": counts["wins"] - counts["losses"],

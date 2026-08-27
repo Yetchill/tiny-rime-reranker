@@ -24,6 +24,11 @@ class RimeRankingDataset(Dataset):
         self.examples = [RankingExample.from_dict(raw, top_k=top_k) for raw in iter_examples(path)]
         self.vocabulary_size = vocabulary_size
         self.top_k = top_k
+        targets_by_pinyin: dict[str, set[str]] = {}
+        for example in self.examples:
+            key = "/".join(example.pinyin)
+            targets_by_pinyin.setdefault(key, set()).add(example.candidates[example.target_index].text)
+        self.contested_keys = {key for key, targets in targets_by_pinyin.items() if len(targets) >= 2}
 
     def __len__(self) -> int:
         return len(self.examples)
@@ -60,5 +65,5 @@ class RimeRankingDataset(Dataset):
             "candidate_mask": torch.tensor(candidate_mask, dtype=torch.bool),
             "target": torch.tensor(example.target_index, dtype=torch.long),
             "baseline_correct": torch.tensor(example.target_index == 0, dtype=torch.bool),
-            "contested_hash": torch.tensor(token_id(contested_key, 2**31 - 1, "contest:"), dtype=torch.long),
+            "contested": torch.tensor(contested_key in self.contested_keys, dtype=torch.bool),
         }

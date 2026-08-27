@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Iterator, TextIO
 
@@ -37,7 +37,7 @@ def validate(paths: list[Path]) -> dict:
     pair_seen: set[tuple[str, str]] = set()
     counts: Counter[str] = Counter()
     recall = Counter()
-    contested: Counter[str] = Counter()
+    contested_targets: dict[str, set[str]] = defaultdict(set)
 
     for path in paths:
         split = path.name.split(".", 1)[0]
@@ -59,7 +59,7 @@ def validate(paths: list[Path]) -> dict:
             for k in (1, 3, 5, 8):
                 if example.target_index < min(k, len(example.candidates)):
                     recall[f"recall@{k}"] += 1
-            contested["/".join(example.pinyin)] += 1
+            contested_targets["/".join(example.pinyin)].add(target)
 
     splits = sorted(documents_by_split)
     for left_index, left in enumerate(splits):
@@ -72,7 +72,7 @@ def validate(paths: list[Path]) -> dict:
         "samples": dict(counts),
         "documents": {split: len(values) for split, values in documents_by_split.items()},
         "candidate_recall": {key: (value / total if total else 0.0) for key, value in recall.items()},
-        "contested_pinyin_keys": sum(value >= 2 for value in contested.values()),
+        "contested_pinyin_keys": sum(len(targets) >= 2 for targets in contested_targets.values()),
     }
 
 

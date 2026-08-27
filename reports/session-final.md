@@ -17,7 +17,7 @@
 - Added conservative gate implementations in Python and C++, Mock/NativeMLP backend contracts, a filter-style librime prototype that reorders genuine candidate objects, and a Core ML backend boundary.
 - Added Linear, MLP, and approximately 2M/4M/8M tiny encoders; CUDA FP16 listwise training, baseline-protection loss, confidence gate, metrics, safetensors best/last saves, and verified FP16 export.
 - Tests: remote CTest 1/1 passed; remote pytest 13 passed; calibrated model-shape suite 5 passed; Mac native runtime test compiled and passed. The librime filter/module source compiled to object files against the locked headers (upstream warning noise only).
-- Git: branch `codex/tinyrime-v0`, ten milestone commits including this final report; final clean status was verified after committing.
+- Git: branch `codex/tinyrime-v0`, eleven milestone commits; final clean status was verified after committing.
 
 ## Dataset
 
