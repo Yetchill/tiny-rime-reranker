@@ -1,0 +1,13 @@
+{
+  "backend": "synthetic-native-mlp-256x64",
+  "compiler": "Apple clang 21.0.0",
+  "captured_at": "2026-08-27T21:50:52+08:00",
+  "host": "arm64-apple-darwin25.6.0",
+  "iterations": 10000,
+  "macos": "26.6.2 (25G83)",
+  "max_ms": 0.1139,
+  "p50_ms": 0.0367,
+  "p95_ms": 0.0417,
+  "p99_ms": 0.0456,
+  "scope": "Measured runtime and synthetic native MLP only; not a trained model, Core ML, Squirrel, or end-to-end candidate update benchmark."
+}
