@@ -21,8 +21,14 @@ from training.models import PRESETS, TinyContextReranker
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("config", type=Path)
+    parser.add_argument("--model", choices=sorted(PRESETS))
+    parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args()
     config = yaml.safe_load(args.config.read_text(encoding="utf-8"))
+    if args.model:
+        config["model"] = args.model
+    if args.output_dir:
+        config["output_dir"] = str(args.output_dir)
     seed = int(config.get("seed", 20260827))
     random.seed(seed)
     np.random.seed(seed)

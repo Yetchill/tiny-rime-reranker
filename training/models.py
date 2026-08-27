@@ -24,9 +24,9 @@ class ModelConfig:
 PRESETS = {
     "linear": ModelConfig("linear", 4096, 16, 0, 0, 1),
     "mlp": ModelConfig("mlp", 8192, 32, 96, 0, 1),
-    "tiny-2m": ModelConfig("tiny-2m", 8192, 128, 128, 1, 4),
-    "tiny-4m": ModelConfig("tiny-4m", 16384, 128, 192, 2, 4),
-    "tiny-8m": ModelConfig("tiny-8m", 32768, 160, 256, 2, 5),
+    "tiny-2m": ModelConfig("tiny-2m", 8192, 160, 160, 1, 5),
+    "tiny-4m": ModelConfig("tiny-4m", 16384, 160, 256, 3, 5),
+    "tiny-8m": ModelConfig("tiny-8m", 32768, 192, 256, 3, 6),
 }
 
 
