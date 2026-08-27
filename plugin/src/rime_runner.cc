@@ -1,10 +1,14 @@
 #include <rime_api.h>
+#include <rime/candidate.h>
 #include <rime/commit_history.h>
+#include <rime/composition.h>
 #include <rime/context.h>
+#include <rime/menu.h>
 #include <rime/service.h>
 
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <string>
 
@@ -81,6 +85,30 @@ void PrintError(const std::string& error) {
   std::cout << "{\"error\":\"" << Escape(error.c_str()) << "\",\"candidates\":[]}" << std::endl;
 }
 
+bool PrintInternalCandidates(RimeSessionId session, int top_k) {
+  auto internal_session = rime::Service::instance().GetSession(session);
+  if (!internal_session || !internal_session->context()) return false;
+  auto* context = internal_session->context();
+  const auto& composition = context->composition();
+  if (composition.empty() || !composition.back().menu) return false;
+  rime::the<rime::Page> page(composition.back().menu->CreatePage(top_k, 0));
+  if (!page) return false;
+  int rank = 0;
+  bool first = true;
+  for (const rime::an<rime::Candidate>& candidate : page->candidates) {
+    if (rank >= top_k) break;
+    if (!first) std::cout << ',';
+    first = false;
+    std::cout << "{\"text\":\"" << Escape(candidate->text().c_str()) << "\",\"rank\":"
+              << rank << ",\"quality\":" << std::setprecision(17) << candidate->quality()
+              << ",\"type\":\"" << Escape(candidate->type().c_str()) << "\",\"comment\":\""
+              << Escape(candidate->comment().c_str()) << "\",\"preedit\":\""
+              << Escape(candidate->preedit().c_str()) << "\"}";
+    ++rank;
+  }
+  return true;
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -151,20 +179,22 @@ int main(int argc, char** argv) {
     }
     std::cout << "{\"pinyin\":\"" << Escape(pinyin.c_str()) << "\",\"context\":\""
               << Escape(context_text.c_str()) << "\",\"candidates\":[";
-    RimeCandidateListIterator iterator;
-    int rank = 0;
-    bool first = true;
-    if (rime->candidate_list_begin(session, &iterator)) {
-      while (rank < top_k && rime->candidate_list_next(&iterator)) {
-        if (!first) std::cout << ',';
-        first = false;
-        std::cout << "{\"text\":\"" << Escape(iterator.candidate.text) << "\",\"rank\":"
-                  << rank << ",\"quality\":null,\"type\":null,\"comment\":\""
-                  << Escape(iterator.candidate.comment) << "\",\"preedit\":\""
-                  << Escape(context.composition.preedit) << "\"}";
-        ++rank;
+    if (!PrintInternalCandidates(session, top_k)) {
+      RimeCandidateListIterator iterator;
+      int rank = 0;
+      bool first = true;
+      if (rime->candidate_list_begin(session, &iterator)) {
+        while (rank < top_k && rime->candidate_list_next(&iterator)) {
+          if (!first) std::cout << ',';
+          first = false;
+          std::cout << "{\"text\":\"" << Escape(iterator.candidate.text) << "\",\"rank\":"
+                    << rank << ",\"quality\":null,\"type\":null,\"comment\":\""
+                    << Escape(iterator.candidate.comment) << "\",\"preedit\":\""
+                    << Escape(context.composition.preedit) << "\"}";
+          ++rank;
+        }
+        rime->candidate_list_end(&iterator);
       }
-      rime->candidate_list_end(&iterator);
     }
     std::cout << "]}" << std::endl;
     rime->free_context(&context);

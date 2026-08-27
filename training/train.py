@@ -16,6 +16,7 @@ from torch.utils.data import DataLoader
 from training.dataset import RimeRankingDataset
 from training.evaluate import evaluate
 from training.models import PRESETS, TinyContextReranker
+from training.vocabulary import ExactVocabulary
 
 
 def main() -> None:
@@ -36,13 +37,38 @@ def main() -> None:
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
     model_config = PRESETS[config["model"]]
+    exact_vocabulary = None
+    if model_config.token_encoding == "exact":
+        if not config.get("vocabulary_path"):
+            raise ValueError("exact token encoding requires vocabulary_path")
+        exact_vocabulary = ExactVocabulary.load(Path(config["vocabulary_path"]))
+        if exact_vocabulary.embedding_capacity != model_config.vocab_size:
+            raise ValueError("vocabulary embedding capacity does not match model preset")
     output_dir = Path(config["output_dir"])
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "config.json").write_text(json.dumps(config, indent=2, sort_keys=True) + "\n")
-    train_data = RimeRankingDataset(Path(config["train_data"]), model_config.vocab_size)
-    val_data = RimeRankingDataset(Path(config["val_data"]), model_config.vocab_size)
+    train_data = RimeRankingDataset(
+        Path(config["train_data"]),
+        model_config.vocab_size,
+        top_k=model_config.top_k,
+        type_encoding=model_config.type_encoding,
+        exact_vocabulary=exact_vocabulary,
+    )
+    val_data = RimeRankingDataset(
+        Path(config["val_data"]),
+        model_config.vocab_size,
+        top_k=model_config.top_k,
+        type_encoding=model_config.type_encoding,
+        exact_vocabulary=exact_vocabulary,
+    )
     test_data = (
-        RimeRankingDataset(Path(config["test_data"]), model_config.vocab_size)
+        RimeRankingDataset(
+            Path(config["test_data"]),
+            model_config.vocab_size,
+            top_k=model_config.top_k,
+            type_encoding=model_config.type_encoding,
+            exact_vocabulary=exact_vocabulary,
+        )
         if config.get("test_data")
         else None
     )
@@ -70,9 +96,13 @@ def main() -> None:
             optimizer.zero_grad(set_to_none=True)
             with torch.amp.autocast("cuda", dtype=torch.float16):
                 residuals, gate_logits = model(
-                    batch["context_ids"], batch["pinyin_ids"], batch["candidate_ids"], batch["numeric_features"]
+                    batch["context_ids"],
+                    batch["pinyin_ids"],
+                    batch["candidate_ids"],
+                    batch["numeric_features"],
+                    batch["candidate_type_ids"],
                 )
-                base = -torch.arange(model_config.top_k, device=device).float().unsqueeze(0)
+                base = -torch.arange(residuals.shape[1], device=device).float().unsqueeze(0)
                 logits = (base + model_config.alpha * residuals).masked_fill(~batch["candidate_mask"], -1e4)
                 listwise = functional.cross_entropy(logits, batch["target"])
                 gate_target = batch["target"].ne(0).float()

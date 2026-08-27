@@ -13,7 +13,8 @@ def test_model_shapes_and_parameter_budget(name):
         torch.ones((2, 32), dtype=torch.long),
         torch.ones((2, 16), dtype=torch.long),
         torch.ones((2, 8, 8), dtype=torch.long),
-        torch.zeros((2, 8, 4)),
+        torch.zeros((2, 8, 3 if config.type_encoding == "categorical" else 4)),
+        torch.ones((2, 8), dtype=torch.long),
     )
     assert residuals.shape == (2, 8)
     assert gate.shape == (2,)

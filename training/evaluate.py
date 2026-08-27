@@ -19,7 +19,11 @@ def evaluate(model, loader, confidence_threshold: float = 0.80, margin_threshold
         device = next(model.parameters()).device
         tensors = {key: value.to(device) for key, value in batch.items()}
         residuals, gate_logits = model(
-            tensors["context_ids"], tensors["pinyin_ids"], tensors["candidate_ids"], tensors["numeric_features"]
+            tensors["context_ids"],
+            tensors["pinyin_ids"],
+            tensors["candidate_ids"],
+            tensors["numeric_features"],
+            tensors["candidate_type_ids"],
         )
         mask = tensors["candidate_mask"]
         base_scores = -torch.arange(mask.shape[1], device=device).float().unsqueeze(0).expand_as(residuals)
